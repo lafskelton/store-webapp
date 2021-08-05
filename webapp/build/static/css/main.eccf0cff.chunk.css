@@ -1,0 +1,2 @@
+span.ripple{position:absolute;border-radius:50%;-webkit-transform:scale(0);transform:scale(0);-webkit-animation:ripple .6s linear;animation:ripple .6s linear;background-color:hsla(0,0%,100%,.7)}@-webkit-keyframes ripple{to{-webkit-transform:scale(4);transform:scale(4);opacity:0}}@keyframes ripple{to{-webkit-transform:scale(4);transform:scale(4);opacity:0}}
+/*# sourceMappingURL=main.eccf0cff.chunk.css.map */
