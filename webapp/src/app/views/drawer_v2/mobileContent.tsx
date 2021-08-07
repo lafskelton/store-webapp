@@ -4,11 +4,13 @@ import {
   ButtonBase,
   Divider,
   Fade,
+  IconButton,
   Slide,
   Typography,
+  useMediaQuery,
   Zoom,
 } from "@material-ui/core";
-import { useDebounce } from "@react-hook/debounce";
+import { CloseOutlined } from "@material-ui/icons";
 import { useEffect, useState } from "react";
 import { ItemContentProps } from "./drawer";
 
@@ -120,12 +122,14 @@ export const ItemContentMobile = ({
     event: React.TouchEventHandler<HTMLElement> | undefined
   ) => {};
 
+  const isTall = useMediaQuery("(min-height: 600px)");
+
   return (
     <Box
       position="relative"
       display="flex"
       flexDirection="column"
-      maxHeight="97%"
+      // maxHeight="100%"
       width="100%"
       onTouchStart={(touchStartEvent) => onTouchStartCtrl(touchStartEvent)}
       onTouchMove={(touchMoveEvent) => onTouchMoveCtrl(touchMoveEvent)}
@@ -133,6 +137,11 @@ export const ItemContentMobile = ({
       // border={1}
       overflow="auto"
     >
+      <Box display="flex" m={1} flexDirection="row-reverse">
+        <IconButton onClick={() => closeDrawer()}>
+          <CloseOutlined style={{ fontSize: 22, color: "#ffffff" }} />
+        </IconButton>
+      </Box>
       {/* Desktop Rounded Image Box */}
       <Box
         display="flex"
@@ -261,58 +270,62 @@ export const ItemContentMobile = ({
           </Box>
 
           {/* Action Buttons */}
-          <Slide
-            in={true}
-            direction="up"
-            timeout={{ appear: 1000, enter: 1000, exit: 333 }}
-          >
-            {/* Info Action Area */}
-
-            <Box
-              display="flex"
-              m={1}
-              // border={0.2}
-              color="#ffffff"
-              // width="50%"
-              flexDirection="row"
-              justifyContent="center"
-              alignItems="center"
+          <Box display="flex" m={1}>
+            <Slide
+              in={true}
+              direction="up"
+              timeout={{ appear: 1000, enter: 1000, exit: 333 }}
             >
-              <Fade
-                in={true}
-                timeout={{ enter: 2222, appear: 2222, exit: 333 }}
+              {/* Info Action Area */}
+
+              <Box
+                display="flex"
+                m={1}
+                // border={0.2}
+                color="#ffffff"
+                // width="50%"
+                flexDirection="row"
+                justifyContent="center"
+                alignItems="center"
               >
-                <Button
-                  // variant="outlined"
-                  size="large"
-                  onClick={() => {
-                    // changeView("about");
-                    {
-                      shoppingCart.includes(sideDrawerData.itemData)
-                        ? removeItemFromCart(sideDrawerData.itemData)
-                        : addItemToCart(sideDrawerData.itemData);
-                    }
-                  }}
-                  // style={{ margin: 10 }}
+                <Fade
+                  in={true}
+                  timeout={{ enter: 2222, appear: 2222, exit: 333 }}
                 >
-                  <Typography
-                    variant="subtitle1"
-                    style={{
-                      fontSize: 18,
-                      color: "#ffffff",
+                  <Button
+                    // variant="outlined"
+                    size="large"
+                    onClick={() => {
+                      // changeView("about");
+                      {
+                        shoppingCart.includes(sideDrawerData.itemData)
+                          ? removeItemFromCart(sideDrawerData.itemData)
+                          : addItemToCart(sideDrawerData.itemData);
+                      }
                     }}
+                    // style={{ margin: 10 }}
                   >
-                    {shoppingCart.includes(sideDrawerData.itemData)
-                      ? "Remove from cart"
-                      : "add to cart"}
-                  </Typography>
-                </Button>
-              </Fade>
-              <br />
-              <br />
-              <Box display="flex" m={1}></Box>
-            </Box>
-          </Slide>
+                    <Typography
+                      variant="subtitle1"
+                      style={{
+                        fontSize: 18,
+                        color: "#ffffff",
+                      }}
+                    >
+                      {shoppingCart.find(
+                        (val) => val.id === sideDrawerData.itemData.id
+                      )
+                        ? "Remove from cart"
+                        : "add to cart"}
+                    </Typography>
+                  </Button>
+                </Fade>
+                <br />
+                <br />
+              </Box>
+            </Slide>
+          </Box>
+          <Box display="flex" height={isTall ? 55 : 35}></Box>
         </Box>
       </Fade>
     </Box>

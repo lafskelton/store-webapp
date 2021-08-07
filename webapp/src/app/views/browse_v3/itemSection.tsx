@@ -1,12 +1,10 @@
-import { Typography, Box, Fade, Slide, Collapse } from "@material-ui/core";
-import { ItemData, RowData, RowType, SideDrawerState } from "./../../myTypes";
+import { Typography, Box, Fade } from "@material-ui/core";
+import { ItemData, SideDrawerState } from "./../../myTypes";
 import { makeStyles } from "@material-ui/core";
 import { createRipple } from "./lib/ripple";
 import { useMediaQuery } from "@material-ui/core";
 import { useEffect, useState } from "react";
-import { useDebounceCallback } from "@react-hook/debounce";
-import { createRef } from "react";
-import ReactDOM, { findDOMNode } from "react-dom";
+
 import { ShoppingCartRounded } from "@material-ui/icons";
 
 const useStyles = makeStyles({
@@ -81,7 +79,9 @@ export const FullSectionRow = ({
       let cartJSON = window.sessionStorage.getItem("shoppingCart");
       if (cartJSON) {
         let cart: ItemData[] = JSON.parse(cartJSON);
-        setinCart(cart.find((val) => val.id === itemData.id) ? true : false);
+        if (cart.length > 0) {
+          setinCart(cart.find((val) => val.id === itemData.id) ? true : false);
+        }
       }
     }, 1000);
     return () => clearInterval(interval);
