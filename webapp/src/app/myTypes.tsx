@@ -1,4 +1,11 @@
 // ################ ITEMS
+
+export interface ShoppingCartItem {
+  item: ItemData;
+  variant: number;
+  qty: number;
+  size: "xsm" | "sm" | "md" | "lg" | "xlg";
+}
 //
 //Defines an item
 export interface ItemData {
@@ -8,10 +15,17 @@ export interface ItemData {
   id: string;
   title: string;
   price: number;
-  variantColors: string[];
+  // variantColors: string[];
+  variants: ItemVariant[];
   tileImg: string;
   // galleryImgList: string[];
   galleryImgList: GalleryImageElement[];
+}
+
+export interface ItemVariant {
+  buttonColor: string;
+  assocGalleryImg: number; //Index of GalleryImageElement in galleryImgList
+  selected: boolean;
 }
 
 export interface GalleryImageElement {

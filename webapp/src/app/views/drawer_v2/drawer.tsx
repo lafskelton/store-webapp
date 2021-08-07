@@ -1,6 +1,6 @@
 import { Box, Fade, useMediaQuery } from "@material-ui/core";
 
-import { ItemData, SideDrawerState } from "../../myTypes";
+import { ItemData, ShoppingCartItem, SideDrawerState } from "../../myTypes";
 
 import { ItemContentDesktop } from "./desktopContent";
 
@@ -12,7 +12,7 @@ export interface SideDrawerProps {
   sideDrawerData: SideDrawerState | undefined;
   addItemToCart: Function;
   removeItemFromCart: Function;
-  shoppingCart: ItemData[];
+  shoppingCart: ShoppingCartItem[];
 }
 
 export const SideDrawer = ({
@@ -39,12 +39,13 @@ export const SideDrawer = ({
         height={window.innerHeight}
         width="100%"
         maxWidth="100%"
+        boxShadow={10}
         maxHeight={isDesktop ? "90%" : "100%"}
         display="flex"
         flexDirection="column"
         justifyContent={isDesktop ? "center" : "center"}
         alignItems="center"
-        border={4}
+        // border={4}
         // m={1}
         style={{
           backdropFilter: "blur(8px)",
@@ -98,5 +99,5 @@ export interface ItemContentProps {
   closeDrawer: Function;
   addItemToCart: Function;
   removeItemFromCart: Function;
-  shoppingCart: ItemData[];
+  shoppingCart: ShoppingCartItem[];
 }

@@ -1,16 +1,5 @@
-import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import {
-  Box,
-  Slide,
-  Typography,
-  Fade,
-  useMediaQuery,
-  Divider,
-  Button,
-} from "@material-ui/core";
-import AllInclusiveTwoToneIcon from "@material-ui/icons/AllInclusiveTwoTone";
-import { useEffect } from "react";
+import { Box, Slide, Typography, useMediaQuery } from "@material-ui/core";
 
 const useStyles = makeStyles({
   headerText: {

@@ -1,26 +1,14 @@
 import { useState } from "react";
-import { makeStyles, withStyles } from "@material-ui/core/styles";
 import { Box } from "@material-ui/core";
 import { useEffect } from "react";
 import MyCart from "./mycart";
 import Checkout from "./checkout";
-import { ItemData } from "../../myTypes";
-
-const useStyles = makeStyles({
-  headerText: {
-    color: "#ffffff",
-    // fontFamily: '"Raleway"',
-  },
-  headerSubtext: {
-    color: "#ffffff",
-    // fontFamily: '"Raleway"',
-  },
-});
+import { ItemData, ShoppingCartItem } from "../../myTypes";
 
 interface HomeProps {
   show: boolean;
   exiting: boolean;
-  shoppingCart: ItemData[];
+  shoppingCart: ShoppingCartItem[];
   removeItemFromCart: Function;
 }
 
@@ -30,10 +18,8 @@ export default function Home({
   shoppingCart,
   removeItemFromCart,
 }: HomeProps) {
-  const classes = useStyles();
-
   const [slideIn, setSlideIn] = useState<boolean>(false);
-  const [currentView, setCurrentView] = useState<"logo" | "about">("logo");
+  const [currentView, setCurrentView] = useState<"cart" | "checkout">("cart");
 
   useEffect(() => {
     setSlideIn(show);
@@ -42,7 +28,7 @@ export default function Home({
     setSlideIn(!exiting);
   }, [exiting]);
 
-  const changeView = (v: "logo" | "about") => {
+  const changeView = (v: "cart" | "checkout") => {
     //Slide out animation
     setSlideIn(false);
     //Change after out
@@ -65,7 +51,7 @@ export default function Home({
       height="100%"
       overflow="hidden"
     >
-      <div style={{ display: currentView === "logo" ? "contents" : "none" }}>
+      <div style={{ display: currentView === "cart" ? "contents" : "none" }}>
         <MyCart
           shoppingCart={shoppingCart}
           removeItemFromCart={removeItemFromCart}
@@ -73,7 +59,9 @@ export default function Home({
           changeView={changeView}
         />
       </div>
-      <div style={{ display: currentView === "about" ? "contents" : "none" }}>
+      <div
+        style={{ display: currentView === "checkout" ? "contents" : "none" }}
+      >
         <Checkout slideIn={slideIn} changeView={changeView} />
       </div>
     </Box>

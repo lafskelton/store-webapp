@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import {
   Box,
@@ -14,10 +13,49 @@ const useStyles = makeStyles({
   headerText: {
     color: "#ffffff",
     // fontFamily: '"Raleway"',
+    fontSize: 18,
+    "@media (min-width:800px)": {
+      fontSize: 222,
+    },
+    "@media (max-width:800px)": {
+      fontSize: 222,
+    },
+    "@media (max-width:700px)": {
+      fontSize: 222,
+    },
+    "@media (max-width:600px)": {
+      fontSize: 200,
+    },
+    "@media (max-width:500px)": {
+      fontSize: 133,
+    },
+    "@media (max-width:325px)": {
+      fontSize: 99,
+    },
   },
   headerSubtext: {
     color: "#ffffff",
     // fontFamily: '"Raleway"',
+  },
+  button: {
+    "@media (min-width:800px)": {
+      fontSize: 24,
+    },
+    "@media (max-width:800px)": {
+      fontSize: 24,
+    },
+    "@media (max-width:700px)": {
+      fontSize: 24,
+    },
+    "@media (max-width:600px)": {
+      fontSize: 22,
+    },
+    "@media (max-width:500px)": {
+      fontSize: 16,
+    },
+    "@media (max-width:325px)": {
+      fontSize: 11,
+    },
   },
 });
 
@@ -34,9 +72,7 @@ export default function AboutUs({ slideIn, changeView }: AboutUsProps) {
         variant="h1"
         align="center"
         className={classes.headerText}
-        style={{
-          fontSize: useMediaQuery("(min-aspect-ratio: 6/5)") ? 111 : 111,
-        }}
+        style={{}}
       >
         <Box
           display="flex"
@@ -118,6 +154,7 @@ export default function AboutUs({ slideIn, changeView }: AboutUsProps) {
           >
             <Typography
               variant="subtitle1"
+              className={classes.button}
               style={{
                 fontSize: useMediaQuery("(min-aspect-ratio: 6/5)") ? 18 : 11,
               }}
