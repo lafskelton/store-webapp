@@ -100,7 +100,7 @@ export const FullSectionRow = ({
           className={classes.tile}
           // border={2}
           boxShadow={5}
-          height={useMediaQuery("(min-width:600px)") ? 375 : 225}
+          height={useMediaQuery("(min-width:600px)") ? 400 : 275}
           width="100%"
           m={0.5}
           onClick={(e) => click(e)}
@@ -228,7 +228,7 @@ export const DoubleSectionRow = ({
           // border={2}
           boxShadow={5}
           width="100%"
-          height={useMediaQuery("(min-width:600px)") ? 200 : 120}
+          height={useMediaQuery("(min-width:600px)") ? 200 : 130}
           m={0.5}
           onClick={(e) => click(e, true)}
         >
@@ -285,7 +285,7 @@ export const DoubleSectionRow = ({
           boxShadow={10}
           width="100%"
           // maxWidth="%50"
-          height={useMediaQuery("(min-width:600px)") ? 200 : 120}
+          height={useMediaQuery("(min-width:600px)") ? 200 : 130}
           m={0.5}
           onClick={(e) => click(e, false)}
           key={`${sectionId}_${rowId}_rightTile`}
