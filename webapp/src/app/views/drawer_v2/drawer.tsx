@@ -23,71 +23,68 @@ export const SideDrawer = ({
   shoppingCart,
   removeItemFromCart,
 }: SideDrawerProps) => {
+  let isWideScreen = useMediaQuery("(min-width: 600px)");
+  let isTallScreen = useMediaQuery("(min-height: 600px)");
   let isDesktop = useMediaQuery("(min-aspect-ratio: 6/5)");
 
   return (
     <Fade
       in={sideDrawerData ? open : false}
-      timeout={{ appear: 444, enter: 444, exit: 555 }}
+      timeout={{ appear: 1000, enter: 444, exit: 555 }}
     >
       {/* Drawer Main Box */}
       <Box
-        height="100%"
+        position="absolute"
+        height="90%"
         width="100%"
         maxWidth="100%"
-        maxHeight="100%"
+        maxHeight={isDesktop ? "90%" : "90%"}
         display="flex"
+        flexDirection="column"
+        justifyContent={isDesktop ? "center" : "flex-end"}
+        alignItems="center"
+        // border={4}
+        // m={1}
         style={{
           backdropFilter: "blur(8px)",
           background: "rgba(0, 0, 0, .5)",
         }}
-        overflow="clip"
+        overflow="auto
+        "
       >
+        {/* Content with margin */}
         <Box
-          height="89%"
-          width="100%"
-          maxWidth="100%"
-          maxHeight="89%"
-          m={1}
           display="flex"
-          flexDirection="column"
-          justifyContent="space-between"
-          alignItems="center"
+          m={1}
+          maxWidth={isWideScreen ? "1200px" : "100%"}
+          maxHeight="95%"
+          borderRadius={8}
         >
-          {/* Content with margin */}
-          <Box
-            display="flex"
-            m={1}
-            maxWidth="1000px"
-            height="100%"
-            borderRadius={8}
-          >
-            {sideDrawerData ? (
-              <div>
-                {isDesktop ? (
-                  <ItemContentDesktop
-                    removeItemFromCart={removeItemFromCart}
-                    shoppingCart={shoppingCart}
-                    addItemToCart={addItemToCart}
-                    closeDrawer={closeDrawer}
-                    sideDrawerData={sideDrawerData}
-                  />
-                ) : (
-                  <ItemContentMobile
-                    removeItemFromCart={removeItemFromCart}
-                    shoppingCart={shoppingCart}
-                    addItemToCart={addItemToCart}
-                    closeDrawer={closeDrawer}
-                    sideDrawerData={sideDrawerData}
-                  />
-                )}
-              </div>
-            ) : (
-              <></>
-            )}
-          </Box>
-          {/* Bottom action buttons */}
+          {sideDrawerData ? (
+            <div>
+              {isDesktop ? (
+                <ItemContentDesktop
+                  removeItemFromCart={removeItemFromCart}
+                  shoppingCart={shoppingCart}
+                  addItemToCart={addItemToCart}
+                  closeDrawer={closeDrawer}
+                  sideDrawerData={sideDrawerData}
+                />
+              ) : (
+                <ItemContentMobile
+                  removeItemFromCart={removeItemFromCart}
+                  shoppingCart={shoppingCart}
+                  addItemToCart={addItemToCart}
+                  closeDrawer={closeDrawer}
+                  sideDrawerData={sideDrawerData}
+                />
+              )}
+            </div>
+          ) : (
+            <></>
+          )}
         </Box>
+        {/* Bottom action buttons */}
       </Box>
     </Fade>
   );

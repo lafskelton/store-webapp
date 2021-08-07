@@ -76,32 +76,32 @@ export const ItemContentMobile = ({
   };
 
   useEffect(() => {
-    console.log("effect");
     setTimeout(() => {
       setSlideIn(true);
       setTimeout(() => {
         setLoaded(true);
-      }, 1000);
-    }, 250);
+      }, 666);
+    }, 666);
   }, []);
 
   return (
     <Box
       display="flex"
       flexDirection="column"
-      height="100%"
-      width="100%"
+      // height="100%"
+      // width="100%"
       onTouchStart={(touchStartEvent) => console.log(touchStartEvent)}
       onTouchMove={(touchMoveEvent) => console.log(touchMoveEvent)}
       onTouchEnd={(e) => console.log()}
+      border={1}
     >
       {/* Desktop Rounded Image Box */}
       <Box
         display="flex"
         position="relative"
         borderRadius={12}
-        m={1}
-        maxHeight="50%"
+        // m={1}
+        // maxHeight="50%"
         maxWidth="100%"
         overflow="hidden"
         // bgcolor=""
@@ -139,7 +139,7 @@ export const ItemContentMobile = ({
         <Slide in={slideIn} direction={slideDir} timeout={555}>
           <img
             src={sideDrawerData.itemData.galleryImgList[galleryPos].imgSrc}
-            style={{ maxWidth: "100%", height: "auto" }}
+            style={{ width: "100%", height: "100%" }}
           />
         </Slide>
       </Box>
