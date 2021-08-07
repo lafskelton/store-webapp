@@ -1,21 +1,8 @@
 import { useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";
 import { Box } from "@material-ui/core";
-import AllInclusiveTwoToneIcon from "@material-ui/icons/AllInclusiveTwoTone";
 import { useEffect } from "react";
 import Logo from "./logo";
 import AboutUs from "./aboutus";
-
-const useStyles = makeStyles({
-  headerText: {
-    color: "#ffffff",
-    // fontFamily: '"Raleway"',
-  },
-  headerSubtext: {
-    color: "#ffffff",
-    // fontFamily: '"Raleway"',
-  },
-});
 
 interface HomeProps {
   show: boolean;
@@ -23,8 +10,6 @@ interface HomeProps {
 }
 
 export default function Home({ show, exiting }: HomeProps) {
-  const classes = useStyles();
-
   // useEffect(() => {
   //   setTimeout(() => {
   //     setTitleTimer(true);
@@ -56,13 +41,13 @@ export default function Home({ show, exiting }: HomeProps) {
   return (
     <Box
       // m={1}
-      display={"flex"}
+      display="flex"
       flexDirection="column"
       alignItems="center"
       justifyContent="center"
       width="100%"
       height="100%"
-      border={1}
+      overflow="hidden"
     >
       <div style={{ display: currentView === "logo" ? "contents" : "none" }}>
         <Logo slideIn={slideIn} changeView={changeView} />

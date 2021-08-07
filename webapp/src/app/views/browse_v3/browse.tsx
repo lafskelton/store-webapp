@@ -1,19 +1,11 @@
-import { useRef, useState, Ref } from "react";
+import { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import {
-  Box,
-  Collapse,
-  Fade,
-  Divider,
-  Slide,
-  Typography,
-} from "@material-ui/core";
+import { Box, Slide } from "@material-ui/core";
 import {
   BrowseManifest,
   ItemData,
-  RowData,
   RowType,
-  SideDrawerState,
+  ShoppingCartItem,
 } from "./../../myTypes";
 import "./browse.css";
 import {
@@ -22,9 +14,7 @@ import {
   SingleSectionRow,
   SectionTitleRow,
 } from "./itemSection";
-import { v4 } from "uuid";
 import { useEffect } from "react";
-import { createRef } from "react";
 
 const useStyles = makeStyles({
   root: {
@@ -58,7 +48,7 @@ export const loadBrowseManifest = async (): Promise<BrowseManifest> => {
                 title: "Random",
                 price: 0,
                 tileImg: "",
-                variantColors: [""],
+                variants: [],
                 galleryImgList: [{ imgSrc: "", imgDesc: "" }],
               },
             ],
@@ -73,11 +63,28 @@ export const loadBrowseManifest = async (): Promise<BrowseManifest> => {
                 sectionId: 0,
                 rowId: 0,
                 rowType: RowType.full,
-                id: "1234",
+                id: "123dfdsfsdfsdf4",
                 title: "Shit #1",
                 price: 59,
                 tileImg: "/assets/images/shirt.jpg",
-                variantColors: ["#324234", "#d33434", "#2332de"],
+                // variantColors: ["#324234", "#d33434", "#2332de"],
+                variants: [
+                  {
+                    buttonColor: "#324234",
+                    assocGalleryImg: 0,
+                    selected: false,
+                  },
+                  {
+                    buttonColor: "#d33434",
+                    assocGalleryImg: 2,
+                    selected: false,
+                  },
+                  {
+                    buttonColor: "#2332de",
+                    assocGalleryImg: 1,
+                    selected: false,
+                  },
+                ],
                 galleryImgList: [
                   {
                     imgSrc: "/assets/images/sweater.jpg",
@@ -90,7 +97,7 @@ export const loadBrowseManifest = async (): Promise<BrowseManifest> => {
                       "This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
                   },
                   {
-                    imgSrc: "/assets/images/mockup2.jpg",
+                    imgSrc: "/assets/images/shirt.jpg",
                     imgDesc:
                       "This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
                   },
@@ -112,7 +119,23 @@ export const loadBrowseManifest = async (): Promise<BrowseManifest> => {
                 title: "Shit #2",
                 price: 39,
                 tileImg: "/assets/images/pants.jpg",
-                variantColors: ["#324234", "#d33434", "#2332de"],
+                variants: [
+                  {
+                    buttonColor: "#324234",
+                    assocGalleryImg: 0,
+                    selected: false,
+                  },
+                  {
+                    buttonColor: "#2332de",
+                    assocGalleryImg: 1,
+                    selected: false,
+                  },
+                  {
+                    buttonColor: "#d33434",
+                    assocGalleryImg: 2,
+                    selected: false,
+                  },
+                ],
                 galleryImgList: [
                   {
                     imgSrc: "/assets/images/sweater.jpg",
@@ -125,7 +148,7 @@ export const loadBrowseManifest = async (): Promise<BrowseManifest> => {
                       "2This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
                   },
                   {
-                    imgSrc: "/assets/images/mockup2.jpg",
+                    imgSrc: "/assets/images/shirt.jpg",
                     imgDesc:
                       "3This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
                   },
@@ -139,8 +162,23 @@ export const loadBrowseManifest = async (): Promise<BrowseManifest> => {
                 title: "Shit #3",
                 price: 13,
                 tileImg: "/assets/images/sweater.jpg",
-                variantColors: ["#324234", "#d33434", "#2332de"],
-
+                variants: [
+                  {
+                    buttonColor: "#324234",
+                    assocGalleryImg: 0,
+                    selected: false,
+                  },
+                  {
+                    buttonColor: "#2332de",
+                    assocGalleryImg: 1,
+                    selected: false,
+                  },
+                  {
+                    buttonColor: "#d33434",
+                    assocGalleryImg: 2,
+                    selected: false,
+                  },
+                ],
                 galleryImgList: [
                   {
                     imgSrc: "/assets/images/sweater.jpg",
@@ -148,12 +186,12 @@ export const loadBrowseManifest = async (): Promise<BrowseManifest> => {
                       "1This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
                   },
                   {
-                    imgSrc: "/assets/images/1.jpg",
+                    imgSrc: "/assets/images/shirt.jpg",
                     imgDesc:
                       "2This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
                   },
                   {
-                    imgSrc: "/assets/images/mockup2.jpg",
+                    imgSrc: "/assets/images/1.jpg",
                     imgDesc:
                       "3This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
                   },
@@ -175,21 +213,36 @@ export const loadBrowseManifest = async (): Promise<BrowseManifest> => {
                 title: "Shit #4",
                 price: 37,
                 tileImg: "/assets/images/shirt.jpg",
-                variantColors: ["#324234", "#d33434", "#2332de"],
-
+                variants: [
+                  {
+                    buttonColor: "#324234",
+                    assocGalleryImg: 0,
+                    selected: false,
+                  },
+                  {
+                    buttonColor: "#2332de",
+                    assocGalleryImg: 1,
+                    selected: false,
+                  },
+                  {
+                    buttonColor: "#d33434",
+                    assocGalleryImg: 2,
+                    selected: false,
+                  },
+                ],
                 galleryImgList: [
                   {
-                    imgSrc: "/assets/images/sweater.jpg",
+                    imgSrc: "/assets/images/1.jpg",
                     imgDesc:
                       "1This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
                   },
                   {
-                    imgSrc: "/assets/images/1.jpg",
+                    imgSrc: "/assets/images/shirt.jpg",
                     imgDesc:
                       "2This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
                   },
                   {
-                    imgSrc: "/assets/images/mockup2.jpg",
+                    imgSrc: "/assets/images/sweater.jpg",
                     imgDesc:
                       "3This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
                   },
@@ -203,8 +256,18 @@ export const loadBrowseManifest = async (): Promise<BrowseManifest> => {
                 title: "Shit #5",
                 price: 69,
                 tileImg: "/assets/images/1.jpg",
-                variantColors: ["#324234", "#2332de"],
-
+                variants: [
+                  {
+                    buttonColor: "#324234",
+                    assocGalleryImg: 0,
+                    selected: false,
+                  },
+                  {
+                    buttonColor: "#2332de",
+                    assocGalleryImg: 1,
+                    selected: false,
+                  },
+                ],
                 galleryImgList: [
                   {
                     imgSrc: "/assets/images/sweater.jpg",
@@ -217,7 +280,7 @@ export const loadBrowseManifest = async (): Promise<BrowseManifest> => {
                       "2This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
                   },
                   {
-                    imgSrc: "/assets/images/mockup2.jpg",
+                    imgSrc: "/assets/images/shirt.jpg",
                     imgDesc:
                       "3This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
                   },
@@ -238,239 +301,27 @@ export const loadBrowseManifest = async (): Promise<BrowseManifest> => {
                 id: "1234",
                 title: "Shit #6",
                 price: 21,
-                tileImg: "/assets/images/mockup2.jpg",
-                variantColors: ["#324234"],
-
-                galleryImgList: [
-                  {
-                    imgSrc: "/assets/images/sweater.jpg",
-                    imgDesc:
-                      "1This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
-                  },
-                  {
-                    imgSrc: "/assets/images/1.jpg",
-                    imgDesc:
-                      "2This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
-                  },
-                  {
-                    imgSrc: "/assets/images/mockup2.jpg",
-                    imgDesc:
-                      "3This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
-                  },
-                ],
-              },
-            ],
-          },
-          {
-            sectionId: 0,
-            rowId: 0,
-            rowType: RowType.sectionTitle,
-            numItems: 1,
-            items: [
-              {
-                sectionId: 0,
-                rowId: 0,
-                rowType: RowType.sectionTitle,
-                id: "",
-                title: "Random",
-                price: 0,
-                tileImg: "",
-                variantColors: [""],
-                galleryImgList: [{ imgSrc: "", imgDesc: "" }],
-              },
-            ],
-          },
-          {
-            sectionId: 0,
-            rowId: 0,
-            rowType: RowType.full,
-            numItems: 1,
-            items: [
-              {
-                sectionId: 0,
-                rowId: 0,
-                rowType: RowType.full,
-                id: "1234",
-                title: "Shit #1",
-                price: 59,
                 tileImg: "/assets/images/shirt.jpg",
-                variantColors: ["#324234", "#d33434", "#2332de"],
-                galleryImgList: [
+                variants: [
                   {
-                    imgSrc: "/assets/images/sweater.jpg",
-                    imgDesc:
-                      "This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
-                  },
-                  {
-                    imgSrc: "/assets/images/1.jpg",
-                    imgDesc:
-                      "This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
-                  },
-                  {
-                    imgSrc: "/assets/images/mockup2.jpg",
-                    imgDesc:
-                      "This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
+                    buttonColor: "#324234",
+                    assocGalleryImg: 0,
+                    selected: false,
                   },
                 ],
-              },
-            ],
-          },
-          {
-            sectionId: 0,
-            rowId: 1,
-            rowType: RowType.double,
-            numItems: 2,
-            items: [
-              {
-                sectionId: 0,
-                rowId: 1,
-                rowType: RowType.double,
-                id: "7b32e09c-297bd-4476-a1b0-6e640357d29f",
-                title: "Shit #2",
-                price: 39,
-                tileImg: "/assets/images/pants.jpg",
-                variantColors: ["#324234", "#d33434", "#2332de"],
                 galleryImgList: [
                   {
-                    imgSrc: "/assets/images/sweater.jpg",
+                    imgSrc: "/assets/images/shirt.jpg",
                     imgDesc:
                       "1This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
                   },
                   {
-                    imgSrc: "/assets/images/1.jpg",
-                    imgDesc:
-                      "2This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
-                  },
-                  {
-                    imgSrc: "/assets/images/mockup2.jpg",
-                    imgDesc:
-                      "3This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
-                  },
-                ],
-              },
-              {
-                sectionId: 0,
-                rowId: 1,
-                rowType: RowType.double,
-                id: "7b32e0-297b-4476-a1b0-6e640357d29f",
-                title: "Shit #3",
-                price: 13,
-                tileImg: "/assets/images/sweater.jpg",
-                variantColors: ["#324234", "#d33434", "#2332de"],
-
-                galleryImgList: [
-                  {
                     imgSrc: "/assets/images/sweater.jpg",
                     imgDesc:
-                      "1This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
-                  },
-                  {
-                    imgSrc: "/assets/images/1.jpg",
-                    imgDesc:
                       "2This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
                   },
                   {
-                    imgSrc: "/assets/images/mockup2.jpg",
-                    imgDesc:
-                      "3This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
-                  },
-                ],
-              },
-            ],
-          },
-          {
-            sectionId: 0,
-            rowId: 2,
-            rowType: RowType.double,
-            numItems: 2,
-            items: [
-              {
-                sectionId: 0,
-                rowId: 2,
-                rowType: RowType.double,
-                id: "7b32e09c-297b-4476-a1-6e640357d29f",
-                title: "Shit #4",
-                price: 37,
-                tileImg: "/assets/images/shirt.jpg",
-                variantColors: ["#324234", "#d33434", "#2332de"],
-
-                galleryImgList: [
-                  {
-                    imgSrc: "/assets/images/sweater.jpg",
-                    imgDesc:
-                      "1This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
-                  },
-                  {
                     imgSrc: "/assets/images/1.jpg",
-                    imgDesc:
-                      "2This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
-                  },
-                  {
-                    imgSrc: "/assets/images/mockup2.jpg",
-                    imgDesc:
-                      "3This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
-                  },
-                ],
-              },
-              {
-                sectionId: 0,
-                rowId: 2,
-                rowType: RowType.double,
-                id: "7b32e09c-297b-4476-a0-6e640357d29f",
-                title: "Shit #5",
-                price: 69,
-                tileImg: "/assets/images/1.jpg",
-                variantColors: ["#324234", "#2332de"],
-
-                galleryImgList: [
-                  {
-                    imgSrc: "/assets/images/sweater.jpg",
-                    imgDesc:
-                      "1This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
-                  },
-                  {
-                    imgSrc: "/assets/images/1.jpg",
-                    imgDesc:
-                      "2This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
-                  },
-                  {
-                    imgSrc: "/assets/images/mockup2.jpg",
-                    imgDesc:
-                      "3This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
-                  },
-                ],
-              },
-            ],
-          },
-          {
-            sectionId: 0,
-            rowId: 3,
-            rowType: RowType.full,
-            numItems: 1,
-            items: [
-              {
-                sectionId: 0,
-                rowId: 3,
-                rowType: RowType.full,
-                id: "1234",
-                title: "Shit #6",
-                price: 21,
-                tileImg: "/assets/images/mockup2.jpg",
-                variantColors: ["#324234"],
-
-                galleryImgList: [
-                  {
-                    imgSrc: "/assets/images/sweater.jpg",
-                    imgDesc:
-                      "1This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
-                  },
-                  {
-                    imgSrc: "/assets/images/1.jpg",
-                    imgDesc:
-                      "2This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
-                  },
-                  {
-                    imgSrc: "/assets/images/mockup2.jpg",
                     imgDesc:
                       "3This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
                   },
@@ -491,7 +342,7 @@ interface BrowseProps {
   openSideDrawer: Function;
   setManifest: Function;
   manifest: BrowseManifest | undefined;
-  shoppingCart: ItemData[];
+  shoppingCart: ShoppingCartItem[];
 }
 
 export default function Browse({
@@ -514,7 +365,6 @@ export default function Browse({
   // }
   const [loaded, setLoaded] = useState<boolean>(false);
   const [slideIn, setSlideIn] = useState<boolean>(false);
-  const [fadeTilesIn, setFadeTilesIn] = useState<boolean>(false);
   const [elems, setElems] = useState<JSX.Element>(<></>);
 
   useEffect(() => {
@@ -524,7 +374,6 @@ export default function Browse({
   useEffect(() => {
     if (!show || !loaded || !exiting) return;
     setSlideIn(false);
-    setFadeTilesIn(false);
   }, [exiting]);
 
   useEffect(() => {
@@ -599,7 +448,7 @@ export default function Browse({
       <Slide
         in={slideIn}
         direction="up"
-        timeout={{ enter: 1200, appear: 200, exit: 300 }}
+        timeout={{ enter: 2222, appear: 1111, exit: 300 }}
         // mountOnEnter
         // unmountOnExit
       >

@@ -1,5 +1,5 @@
 import { Typography, Box, Fade } from "@material-ui/core";
-import { ItemData, SideDrawerState } from "./../../myTypes";
+import { ItemData, ShoppingCartItem, SideDrawerState } from "./../../myTypes";
 import { makeStyles } from "@material-ui/core";
 import { createRipple } from "./lib/ripple";
 import { useMediaQuery } from "@material-ui/core";
@@ -78,21 +78,29 @@ export const FullSectionRow = ({
     const interval = setInterval(() => {
       let cartJSON = window.sessionStorage.getItem("shoppingCart");
       if (cartJSON) {
-        let cart: ItemData[] = JSON.parse(cartJSON);
+        let cart: ShoppingCartItem[] = JSON.parse(cartJSON);
         if (cart.length > 0) {
-          setinCart(cart.find((val) => val.id === itemData.id) ? true : false);
+          setinCart(
+            cart.find((cartItem) => cartItem.item.id === itemData.id) !==
+              undefined
+              ? true
+              : false
+          );
+        } else {
+          setinCart(false);
         }
       }
-    }, 1000);
+    }, 222);
     return () => clearInterval(interval);
   }, []);
 
-  const [show, setShow] = useState(false);
-  useEffect(() => {
-    setTimeout(() => {
-      setShow(true);
-    }, 1111);
-  }, []);
+  // const [show, setShow] = useState(false);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setShow(true);
+  //   }, 1111);
+  // }, []);
+
   return (
     <Box display="flex" flexDirection="row" justifyContent={"space-around"}>
       <Fade in={true}>
@@ -148,8 +156,8 @@ export const FullSectionRow = ({
             borderRadius={0}
             className={classes.tileBar}
           >
-            <Typography variant={"h4"} style={{ color: "#ffffff" }}>
-              &nbsp;&nbsp;&nbsp;${itemData.price}
+            <Typography variant={"h3"} style={{ color: "#ffffff" }}>
+              &nbsp;&nbsp;${itemData.price}
             </Typography>
           </Box>
         </Box>
@@ -193,12 +201,12 @@ export const DoubleSectionRow = ({
     createRipple(event);
   };
 
-  const [show, setShow] = useState(false);
-  useEffect(() => {
-    setTimeout(() => {
-      setShow(true);
-    }, 555);
-  }, []);
+  // const [show, setShow] = useState(false);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setShow(true);
+  //   }, 555);
+  // }, []);
 
   const [leftInCart, setLeftInCart] = useState(false);
   const [rightInCart, setRightInCart] = useState(false);
@@ -207,13 +215,17 @@ export const DoubleSectionRow = ({
     const interval = setInterval(() => {
       let cartJSON = window.sessionStorage.getItem("shoppingCart");
       if (cartJSON) {
-        let cart: ItemData[] = JSON.parse(cartJSON);
+        let cart: ShoppingCartItem[] = JSON.parse(cartJSON);
         setLeftInCart(
-          cart.find((val) => val.id === leftItemData.id) ? true : false
+          cart.find((cartItem) => cartItem.item.id === leftItemData.id)
+            ? true
+            : false
         );
 
         setRightInCart(
-          cart.find((val) => val.id === rightItemData.id) ? true : false
+          cart.find((cartItem) => cartItem.item.id === rightItemData.id)
+            ? true
+            : false
         );
       }
     }, 1000);

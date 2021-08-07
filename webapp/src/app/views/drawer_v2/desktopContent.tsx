@@ -1,19 +1,29 @@
 import {
   Box,
   Button,
-  ButtonBase,
   Divider,
   Fade,
   IconButton,
+  InputBase,
+  MenuItem,
+  NativeSelect,
+  Select,
   Slide,
   Typography,
   Zoom,
 } from "@material-ui/core";
-import { ArrowLeftTwoTone, ArrowRightTwoTone } from "@material-ui/icons";
-import { useState } from "react";
+import {
+  ArrowLeftTwoTone,
+  ArrowRightTwoTone,
+  DoneOutlineRounded,
+} from "@material-ui/icons";
+import { useEffect, useState } from "react";
+import { makeStyles } from "@material-ui/styles";
 import CloseIcon from "@material-ui/icons/Close";
 import { ItemContentProps } from "./drawer";
 import { useMediaQuery } from "@material-ui/core";
+import { ItemVariant } from "../../myTypes";
+
 export const ItemContentDesktop = ({
   sideDrawerData,
   closeDrawer,
@@ -27,9 +37,23 @@ export const ItemContentDesktop = ({
   >("right");
   const [slideIn, setSlideIn] = useState<boolean>(true);
   const [galleryPos, setGalleryPos] = useState<number>(0);
-  const [galleryOffset, setGalleryOffset] = useState<number>(0);
 
   let isWideScreen = useMediaQuery("(min-width:1200px)");
+
+  const goToImage = (n: number) => {
+    //Slide out to the right
+    setSlideDir("right");
+    setSlideIn(false);
+    setTimeout(() => {
+      setSlideDir("left");
+
+      setGalleryPos(n);
+
+      setTimeout(() => {
+        setSlideIn(true);
+      }, 250);
+    }, 666);
+  };
 
   //Controls left & right transition of gallery images
   const galleryController = (
@@ -45,11 +69,11 @@ export const ItemContentDesktop = ({
       setTimeout(() => {
         setSlideDir("left");
 
-        //spinny index thing
-        setGalleryPos(
-          (galleryOffset + 1) % sideDrawerData.itemData.galleryImgList.length
-        );
-        setGalleryOffset(galleryOffset + 1);
+        if (galleryPos + 1 >= sideDrawerData.itemData.galleryImgList.length) {
+          setGalleryPos(0);
+        } else {
+          setGalleryPos(galleryPos + 1);
+        }
 
         setTimeout(() => {
           setSlideIn(true);
@@ -64,11 +88,11 @@ export const ItemContentDesktop = ({
       setTimeout(() => {
         setSlideDir("right");
 
-        //spinny index thing
-        setGalleryPos(
-          (galleryOffset + 1) % sideDrawerData.itemData.galleryImgList.length
-        );
-        setGalleryOffset(galleryOffset + 1);
+        if (galleryPos - 1 < 0) {
+          setGalleryPos(sideDrawerData.itemData.galleryImgList.length - 1);
+        } else {
+          setGalleryPos(galleryPos - 1);
+        }
 
         setTimeout(() => {
           setSlideIn(true);
@@ -76,6 +100,32 @@ export const ItemContentDesktop = ({
       }, 555);
     }
   };
+
+  const [variantList, setVariantList] = useState<ItemVariant[] | undefined>(
+    undefined
+  );
+  const [selectedVariant, setSelectedVariant] = useState<number>(0);
+
+  const [selectedSize, setSelectedSize] = useState<
+    "xsm" | "sml" | "med" | "lrg" | "xlg"
+  >("med");
+
+  const selectVariant = (n: number) => {
+    setSelectedVariant(n);
+    if (variantList) {
+      let newVariantList = [...variantList];
+      for (let i = 0; i < newVariantList.length; i++) {
+        newVariantList[i].selected = i == n;
+      }
+      setVariantList(newVariantList);
+    }
+
+    goToImage(n);
+  };
+
+  useEffect(() => {
+    setVariantList(sideDrawerData.itemData.variants);
+  }, [sideDrawerData]);
 
   return (
     // Item Content
@@ -92,7 +142,7 @@ export const ItemContentDesktop = ({
         justifyContent="center"
         alignItems="center"
         m={1}
-        border={1}
+        // border={1}
         // width="100%"
         maxWidth={isWideScreen ? 1200 : "100%"}
       >
@@ -102,7 +152,7 @@ export const ItemContentDesktop = ({
           position="relative"
           borderRadius={12}
           overflow="hidden"
-          boxShadow={5}
+          boxShadow={2}
           width="100%"
           maxWidth="100%"
         >
@@ -119,7 +169,12 @@ export const ItemContentDesktop = ({
                 style={{ height: "100%" }}
                 onClick={(e) => galleryController(e, true)}
               >
-                <ArrowLeftTwoTone style={{ fontSize: 69, color: "black" }} />
+                <ArrowLeftTwoTone
+                  style={{
+                    fontSize: 69,
+                    color: "white",
+                  }}
+                />
               </IconButton>
             </Box>
             <Box display="flex" flexGrow={1} height="100%" width="100%"></Box>
@@ -128,7 +183,7 @@ export const ItemContentDesktop = ({
                 style={{ height: "100%" }}
                 onClick={(e) => galleryController(e, false)}
               >
-                <ArrowRightTwoTone style={{ fontSize: 69, color: "black" }} />
+                <ArrowRightTwoTone style={{ fontSize: 69, color: "white" }} />
               </IconButton>
             </Box>
           </Box>
@@ -140,6 +195,7 @@ export const ItemContentDesktop = ({
             timeout={{ enter: 500, appear: 1000, exit: 500 }}
           >
             <img
+              alt=""
               src={sideDrawerData.itemData.galleryImgList[galleryPos].imgSrc}
               style={{ maxWidth: "100%", height: "auto" }}
             />
@@ -206,24 +262,73 @@ export const ItemContentDesktop = ({
               <Box width="95%">
                 <Divider />
               </Box>
-              <Box display="flex" m={1} width="95%" flexDirection="row">
-                {sideDrawerData.itemData.variantColors.map((color) => (
-                  <Zoom
-                    in={true}
-                    timeout={{ appear: 2222, enter: 1000, exit: 333 }}
+              <Box
+                display="flex"
+                m={1}
+                width="95%"
+                flexDirection="row"
+                justifyContent="space-between"
+              >
+                <Box display="flex" m={1}>
+                  {variantList ? (
+                    variantList.map((v, i) => (
+                      <Zoom
+                        in={true}
+                        timeout={{ appear: 2222, enter: 1000, exit: 333 }}
+                      >
+                        <IconButton
+                          style={{
+                            //Change manifest array to map with pointer index to related image
+                            background: v.buttonColor,
+                            borderRadius: 12,
+                            height: 40,
+                            width: 40,
+                            margin: 3,
+                            opacity: v.selected ? 0.5 : 1,
+                          }}
+                          onClick={() => {
+                            selectVariant(i);
+                          }}
+                        >
+                          {v.selected ? <DoneOutlineRounded /> : <></>}
+                        </IconButton>
+                      </Zoom>
+                    ))
+                  ) : (
+                    <></>
+                  )}
+                </Box>
+                <Box display="flex" m={1} width="25%">
+                  <Select
+                    // labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={selectedSize}
+                    onChange={(e) => {
+                      setSelectedSize(
+                        e.target.value as "xsm" | "sml" | "med" | "lrg" | "xlg"
+                      );
+                    }}
+                    fullWidth
+                    MenuProps={{
+                      MenuListProps: {
+                        style: {
+                          backdropFilter: "blur(6px)",
+                        },
+                      },
+                    }}
                   >
-                    <ButtonBase
-                      style={{
-                        //Change manifest array to map with pointer index to related image
-                        background: color,
-                        borderRadius: 12,
-                        height: 40,
-                        width: 40,
-                        margin: 3,
-                      }}
-                    />
-                  </Zoom>
-                ))}
+                    <MenuItem
+                      value={"xsm"}
+                      style={{ backdropFilter: "blur(6px)" }}
+                    >
+                      X-Small
+                    </MenuItem>
+                    <MenuItem value={"sm"}>Small</MenuItem>
+                    <MenuItem value={"md"}>Medium</MenuItem>
+                    <MenuItem value={"lg"}>Large</MenuItem>
+                    <MenuItem value={"xlg"}>X-Large</MenuItem>
+                  </Select>
+                </Box>
               </Box>
 
               <Box width="95%">
@@ -266,11 +371,17 @@ export const ItemContentDesktop = ({
                     <Button
                       size="large"
                       onClick={() => {
-                        {
-                          shoppingCart.includes(sideDrawerData.itemData)
-                            ? removeItemFromCart(sideDrawerData.itemData)
-                            : addItemToCart(sideDrawerData.itemData);
-                        }
+                        shoppingCart.find(
+                          (cartItem) =>
+                            cartItem.item.id === sideDrawerData.itemData.id
+                        )
+                          ? removeItemFromCart(sideDrawerData.itemData)
+                          : addItemToCart(
+                              sideDrawerData.itemData,
+                              selectedVariant,
+                              selectedSize,
+                              0
+                            );
                       }}
                     >
                       <Typography
@@ -280,7 +391,10 @@ export const ItemContentDesktop = ({
                           color: "#ffffff",
                         }}
                       >
-                        {shoppingCart.includes(sideDrawerData.itemData)
+                        {shoppingCart.find(
+                          (cartItem) =>
+                            cartItem.item.id === sideDrawerData.itemData.id
+                        )
                           ? "Remove from cart"
                           : "add to cart"}
                       </Typography>

@@ -5,13 +5,16 @@ import {
   Divider,
   Fade,
   IconButton,
+  MenuItem,
+  Select,
   Slide,
   Typography,
   useMediaQuery,
   Zoom,
 } from "@material-ui/core";
-import { CloseOutlined } from "@material-ui/icons";
+import { CloseOutlined, DoneOutlineRounded } from "@material-ui/icons";
 import { useEffect, useState } from "react";
+import { ItemVariant } from "../../myTypes";
 import { ItemContentProps } from "./drawer";
 
 export const ItemContentMobile = ({
@@ -28,10 +31,25 @@ export const ItemContentMobile = ({
   >("right");
   const [slideIn, setSlideIn] = useState<boolean>(false);
   const [galleryPos, setGalleryPos] = useState<number>(0);
-  const [galleryOffset, setGalleryOffset] = useState<number>(0);
   // setTimeout(() => {
   //   setSlideIn(true);
   // }, 500);
+
+  const goToImage = (n: number) => {
+    //Slide out to the right
+    setSlideDir("right");
+    setSlideIn(false);
+    setTimeout(() => {
+      setSlideDir("left");
+
+      setGalleryPos(n);
+
+      setTimeout(() => {
+        setSlideIn(true);
+      }, 250);
+    }, 666);
+  };
+
   //Controls left & right transition of gallery images
   const galleryController = (goLeft: boolean) => {
     if (goLeft) {
@@ -43,11 +61,11 @@ export const ItemContentMobile = ({
       setTimeout(() => {
         setSlideDir("left");
 
-        //spinny index thing
-        setGalleryPos(
-          (galleryOffset + 1) % sideDrawerData.itemData.galleryImgList.length
-        );
-        setGalleryOffset(galleryOffset + 1);
+        if (galleryPos + 1 >= sideDrawerData.itemData.galleryImgList.length) {
+          setGalleryPos(0);
+        } else {
+          setGalleryPos(galleryPos + 1);
+        }
 
         setTimeout(() => {
           setSlideIn(true);
@@ -62,11 +80,11 @@ export const ItemContentMobile = ({
       setTimeout(() => {
         setSlideDir("right");
 
-        //spinny index thing
-        setGalleryPos(
-          (galleryOffset + 1) % sideDrawerData.itemData.galleryImgList.length
-        );
-        setGalleryOffset(galleryOffset + 1);
+        if (galleryPos - 1 < 0) {
+          setGalleryPos(sideDrawerData.itemData.galleryImgList.length - 1);
+        } else {
+          setGalleryPos(galleryPos - 1);
+        }
 
         setTimeout(() => {
           setSlideIn(true);
@@ -90,7 +108,6 @@ export const ItemContentMobile = ({
   const [touchStartY, setTouchStartY] = useState(0);
 
   const onTouchStartCtrl = (event: React.TouchEvent<HTMLElement>) => {
-    let touch = event.touches.item(0);
     // console.log("start", "X:", touch.clientX, "Y:", touch.clientY);
     setTouchStartX(event.touches.item(0).clientX);
     setTouchStartY(event.touches.item(0).clientY);
@@ -98,12 +115,12 @@ export const ItemContentMobile = ({
 
   const onTouchMoveCtrl = (event: React.TouchEvent<HTMLElement>) => {
     //Left
-    if (event.touches.item(0).clientX + 250 < touchStartX) {
+    if (event.touches.item(0).clientX + 100 < touchStartX) {
       console.log("swiped left");
       galleryController(true);
     }
     //right
-    if (event.touches.item(0).clientX - 250 > touchStartX) {
+    if (event.touches.item(0).clientX - 100 > touchStartX) {
       console.log("swiped right");
       galleryController(false);
     }
@@ -123,6 +140,33 @@ export const ItemContentMobile = ({
   ) => {};
 
   const isTall = useMediaQuery("(min-height: 600px)");
+
+  // ### variant controllers
+  const [variantList, setVariantList] = useState<ItemVariant[] | undefined>(
+    undefined
+  );
+  const [selectedVariant, setSelectedVariant] = useState<number>(0);
+
+  const [selectedSize, setSelectedSize] = useState<
+    "xsm" | "sml" | "med" | "lrg" | "xlg"
+  >("med");
+
+  const selectVariant = (n: number) => {
+    setSelectedVariant(n);
+    if (variantList) {
+      let newVariantList = [...variantList];
+      for (let i = 0; i < newVariantList.length; i++) {
+        newVariantList[i].selected = i == n;
+      }
+      setVariantList(newVariantList);
+    }
+
+    goToImage(n);
+  };
+
+  useEffect(() => {
+    setVariantList(sideDrawerData.itemData.variants);
+  }, [sideDrawerData]);
 
   return (
     <Box
@@ -185,6 +229,7 @@ export const ItemContentMobile = ({
         {/* Image Slider */}
         <Slide in={slideIn} direction={slideDir} timeout={555}>
           <img
+            alt=""
             src={sideDrawerData.itemData.galleryImgList[galleryPos].imgSrc}
             style={{ width: "100%", height: "100%" }}
           />
@@ -202,24 +247,28 @@ export const ItemContentMobile = ({
           justifyContent="space-around"
           alignItems="center"
         >
-          {/* Item Title & Price */}
+          {/* Title/Price & Variant rows  */}
           <Box display="flex" flexDirection="column" m={1} width="100%">
             <Box
               display="flex"
               flexDirection="row"
-              width="100%"
+              m={1}
               justifyContent="space-between"
             >
-              <Typography variant="h2" style={{ color: "#ffffff" }}>
-                {sideDrawerData.itemData.title}
-              </Typography>
-              <Typography
-                variant="h2"
-                align="right"
-                style={{ color: "#ffffff" }}
-              >
-                ${sideDrawerData.itemData.price}
-              </Typography>
+              <Box display="flex" m={1}>
+                <Typography variant="h2" style={{ color: "#ffffff" }}>
+                  {sideDrawerData.itemData.title}
+                </Typography>
+              </Box>
+              <Box display="flex" m={1}>
+                <Typography
+                  variant="h2"
+                  align="right"
+                  style={{ color: "#ffffff" }}
+                >
+                  ${sideDrawerData.itemData.price}
+                </Typography>
+              </Box>
             </Box>
 
             {/* Variant Action Area */}
@@ -233,25 +282,73 @@ export const ItemContentMobile = ({
               <Box width="95%">
                 <Divider />
               </Box>
-              <Box display="flex" m={1} width="95%" flexDirection="row">
-                {sideDrawerData.itemData.variantColors.map((color) => (
-                  <Zoom
-                    in={true}
-                    timeout={{ appear: 2222, enter: 1000, exit: 333 }}
+              <Box
+                display="flex"
+                m={1}
+                width="95%"
+                flexDirection="row"
+                justifyContent="space-between"
+              >
+                <Box display="flex" m={1}>
+                  {variantList ? (
+                    variantList.map((v, i) => (
+                      <Zoom
+                        in={true}
+                        timeout={{ appear: 2222, enter: 1000, exit: 333 }}
+                      >
+                        <IconButton
+                          style={{
+                            //Change manifest array to map with pointer index to related image
+                            background: v.buttonColor,
+                            borderRadius: 12,
+                            height: 40,
+                            width: 40,
+                            margin: 3,
+                            opacity: v.selected ? 0.5 : 1,
+                          }}
+                          onClick={() => {
+                            selectVariant(i);
+                          }}
+                        >
+                          {v.selected ? <DoneOutlineRounded /> : <></>}
+                        </IconButton>
+                      </Zoom>
+                    ))
+                  ) : (
+                    <></>
+                  )}
+                </Box>
+                <Box display="flex" m={1} width="25%">
+                  <Select
+                    labelId="drawer-select-label"
+                    id="drawer-simple-select"
+                    value={selectedSize}
+                    onChange={(e) => {
+                      setSelectedSize(
+                        e.target.value as "xsm" | "sml" | "med" | "lrg" | "xlg"
+                      );
+                    }}
+                    fullWidth
+                    MenuProps={{
+                      MenuListProps: {
+                        style: {
+                          backdropFilter: "blur(6px)",
+                        },
+                      },
+                    }}
                   >
-                    <ButtonBase
-                      style={{
-                        //Change manifest array to map with pointer index to related image
-                        background: color,
-                        // backgroundColor: "#000000",
-                        borderRadius: 12,
-                        height: 30,
-                        width: 30,
-                        margin: 3,
-                      }}
-                    />
-                  </Zoom>
-                ))}
+                    <MenuItem
+                      value={"xsm"}
+                      style={{ backdropFilter: "blur(6px)" }}
+                    >
+                      X-Small
+                    </MenuItem>
+                    <MenuItem value={"sm"}>Small</MenuItem>
+                    <MenuItem value={"md"}>Medium</MenuItem>
+                    <MenuItem value={"lg"}>Large</MenuItem>
+                    <MenuItem value={"xlg"}>X-Large</MenuItem>
+                  </Select>
+                </Box>
               </Box>
 
               <Box width="95%">
@@ -261,8 +358,15 @@ export const ItemContentMobile = ({
           </Box>
 
           {/* Description Area */}
-          <Box display="flex" m={1} overflow="hidden">
-            <Fade in={loaded}>
+          <Box display="flex" m={2} overflow="hidden">
+            <Fade
+              in={loaded}
+              timeout={{
+                appear: 666,
+                enter: 666,
+                exit: 666,
+              }}
+            >
               <Typography variant="subtitle1" align="center">
                 {sideDrawerData.itemData.galleryImgList[galleryPos].imgDesc}
               </Typography>
@@ -296,12 +400,21 @@ export const ItemContentMobile = ({
                     // variant="outlined"
                     size="large"
                     onClick={() => {
-                      // changeView("about");
-                      {
-                        shoppingCart.includes(sideDrawerData.itemData)
-                          ? removeItemFromCart(sideDrawerData.itemData)
-                          : addItemToCart(sideDrawerData.itemData);
-                      }
+                      // shoppingCart.includes(sideDrawerData.itemData.item)
+                      //   ? removeItemFromCart(sideDrawerData.itemData)
+                      //   : addItemToCart(sideDrawerData.itemData);
+
+                      shoppingCart.find(
+                        (cartItem) =>
+                          cartItem.item.id === sideDrawerData.itemData.id
+                      )
+                        ? removeItemFromCart(sideDrawerData.itemData)
+                        : addItemToCart(
+                            sideDrawerData.itemData,
+                            selectedVariant,
+                            selectedSize,
+                            0
+                          );
                     }}
                     // style={{ margin: 10 }}
                   >
@@ -313,7 +426,8 @@ export const ItemContentMobile = ({
                       }}
                     >
                       {shoppingCart.find(
-                        (val) => val.id === sideDrawerData.itemData.id
+                        (cartItem) =>
+                          cartItem.item.id === sideDrawerData.itemData.id
                       )
                         ? "Remove from cart"
                         : "add to cart"}

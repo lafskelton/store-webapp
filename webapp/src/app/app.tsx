@@ -4,13 +4,18 @@ import Home from "./views/home/home";
 import Browse, { loadBrowseManifest } from "./views/browse_v3/browse";
 import Cart from "./views/cart/cart";
 import { Slide, Box } from "@material-ui/core";
-import { BrowseManifest, ItemData, SideDrawerState } from "./myTypes";
+import {
+  BrowseManifest,
+  ItemData,
+  ShoppingCartItem,
+  SideDrawerState,
+} from "./myTypes";
 import { SideDrawer } from "./views/drawer_v2/drawer";
 import { useMediaQuery } from "@material-ui/core";
 
 function App() {
   const [menuSelectState, setMenuSelectState] = useState("Home");
-  const [shoppingCart, setShoppingCart] = useState<ItemData[]>([]);
+  const [shoppingCart, setShoppingCart] = useState<ShoppingCartItem[]>([]);
   const [sideDrawer, setSideDrawer] = useState<SideDrawerState | undefined>(
     undefined
   );
@@ -21,8 +26,19 @@ function App() {
   const isDesktop = useMediaQuery("(min-aspect-ratio: 6/5)");
 
   // Shopping cart func
-  const addItemToCart = (item: ItemData) => {
-    let newCart = shoppingCart.concat([item]);
+  const addItemToCart = (
+    item: ItemData,
+    variant: number,
+    size: "xsm" | "sm" | "md" | "lg" | "xlg",
+    qty: number
+  ) => {
+    let cartItem: ShoppingCartItem = {
+      item: item,
+      variant: variant,
+      size: size,
+      qty: qty,
+    };
+    let newCart = shoppingCart.concat([cartItem]);
     window.sessionStorage.setItem("shoppingCart", JSON.stringify(newCart));
     console.log(newCart);
 
@@ -30,7 +46,7 @@ function App() {
   };
 
   const removeItemFromCart = (item: ItemData) => {
-    let newCart = shoppingCart.filter((elem) => elem.id !== item.id);
+    let newCart = shoppingCart.filter((elem) => elem.item.id !== item.id);
     window.sessionStorage.setItem("shoppingCart", JSON.stringify(newCart));
     console.log(newCart);
     setShoppingCart(newCart);
@@ -78,14 +94,15 @@ function App() {
       console.log(m);
       setManifest(m);
     });
-  }, []);
+  }, [manifest]);
 
   useEffect(() => {
     if (shoppingCart.length === 0) {
       let cartJSON = window.sessionStorage.getItem("shoppingCart");
       console.log("got a cart on load hehe ", cartJSON);
       if (cartJSON) {
-        let cart: ItemData[] | undefined = JSON.parse(cartJSON);
+        let cart: ShoppingCartItem[] | undefined = JSON.parse(cartJSON);
+
         if (cart) {
           setShoppingCart(shoppingCart.concat(cart));
         }
@@ -146,8 +163,7 @@ function App() {
             display="flex"
             flexDirection="column"
             width="100%"
-            justifyContent="center"
-            alignItems="center"
+            height="89%"
           >
             <Home
               show={menuSelectState === "Home"}
@@ -199,7 +215,7 @@ function App() {
       <Slide
         direction="up"
         in={true}
-        timeout={{ appear: 444, enter: 444, exit: 333 }}
+        timeout={{ appear: 3333, enter: 2222, exit: 333 }}
         unmountOnExit
         mountOnEnter
       >
@@ -232,7 +248,7 @@ function App() {
         height={sideDrawer ? "100%" : "0%"}
         width={sideDrawer ? (isDesktop ? "99%" : "100%") : "0%"}
         maxHeight="100%"
-        boxShadow={10}
+        // boxShadow={10}
         maxWidth="100%"
         overflow="hidden"
       >
