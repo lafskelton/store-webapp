@@ -30,7 +30,7 @@ function App() {
   };
 
   const removeItemFromCart = (item: ItemData) => {
-    let newCart = shoppingCart.filter((elem) => elem !== item);
+    let newCart = shoppingCart.filter((elem) => elem.id !== item.id);
     window.sessionStorage.setItem("shoppingCart", JSON.stringify(newCart));
     console.log(newCart);
     setShoppingCart(newCart);
@@ -81,8 +81,17 @@ function App() {
   }, []);
 
   useEffect(() => {
-    console.log(shoppingCart);
-  }, [shoppingCart]);
+    if (shoppingCart.length === 0) {
+      let cartJSON = window.sessionStorage.getItem("shoppingCart");
+      console.log("got a cart on load hehe ", cartJSON);
+      if (cartJSON) {
+        let cart: ItemData[] | undefined = JSON.parse(cartJSON);
+        if (cart) {
+          setShoppingCart(shoppingCart.concat(cart));
+        }
+      }
+    }
+  }, []);
 
   const openSideDrawer = (newState: SideDrawerState) => {
     if (!showSideDrawer) {

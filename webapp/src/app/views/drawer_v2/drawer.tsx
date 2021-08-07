@@ -24,7 +24,6 @@ export const SideDrawer = ({
   removeItemFromCart,
 }: SideDrawerProps) => {
   let isWideScreen = useMediaQuery("(min-width: 600px)");
-  let isTallScreen = useMediaQuery("(min-height: 600px)");
   let isDesktop = useMediaQuery("(min-aspect-ratio: 6/5)");
 
   return (
@@ -37,7 +36,7 @@ export const SideDrawer = ({
         position="absolute"
         top={0}
         left={0}
-        height="100%"
+        height={window.innerHeight}
         width="100%"
         maxWidth="100%"
         maxHeight={isDesktop ? "90%" : "100%"}
@@ -45,7 +44,7 @@ export const SideDrawer = ({
         flexDirection="column"
         justifyContent={isDesktop ? "center" : "center"}
         alignItems="center"
-        // border={4}
+        border={4}
         // m={1}
         style={{
           backdropFilter: "blur(8px)",
