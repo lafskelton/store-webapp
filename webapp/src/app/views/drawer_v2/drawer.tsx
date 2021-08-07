@@ -35,13 +35,15 @@ export const SideDrawer = ({
       {/* Drawer Main Box */}
       <Box
         position="absolute"
-        height="90%"
+        top={0}
+        left={0}
+        height="100%"
         width="100%"
         maxWidth="100%"
-        maxHeight={isDesktop ? "90%" : "90%"}
+        maxHeight={isDesktop ? "90%" : "100%"}
         display="flex"
         flexDirection="column"
-        justifyContent={isDesktop ? "center" : "flex-end"}
+        justifyContent={isDesktop ? "center" : "center"}
         alignItems="center"
         // border={4}
         // m={1}
@@ -57,8 +59,10 @@ export const SideDrawer = ({
           display="flex"
           m={1}
           maxWidth={isWideScreen ? "1200px" : "100%"}
-          maxHeight="95%"
+          maxHeight="100%"
           borderRadius={8}
+          // border={1}
+          // overflow="auto"
         >
           {sideDrawerData ? (
             <div>

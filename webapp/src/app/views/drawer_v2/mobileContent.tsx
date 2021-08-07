@@ -8,6 +8,7 @@ import {
   Typography,
   Zoom,
 } from "@material-ui/core";
+import { useDebounce } from "@react-hook/debounce";
 import { useEffect, useState } from "react";
 import { ItemContentProps } from "./drawer";
 
@@ -30,11 +31,8 @@ export const ItemContentMobile = ({
   //   setSlideIn(true);
   // }, 500);
   //Controls left & right transition of gallery images
-  const galleryController = (
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-    isLeft: boolean
-  ) => {
-    if (isLeft) {
+  const galleryController = (goLeft: boolean) => {
+    if (goLeft) {
       // Move Left
       //Slide out to the right
       setSlideDir("right");
@@ -84,16 +82,56 @@ export const ItemContentMobile = ({
     }, 666);
   }, []);
 
+  // ###### touch controllers
+
+  const [touchStartX, setTouchStartX] = useState(0);
+  const [touchStartY, setTouchStartY] = useState(0);
+
+  const onTouchStartCtrl = (event: React.TouchEvent<HTMLElement>) => {
+    let touch = event.touches.item(0);
+    // console.log("start", "X:", touch.clientX, "Y:", touch.clientY);
+    setTouchStartX(event.touches.item(0).clientX);
+    setTouchStartY(event.touches.item(0).clientY);
+  };
+
+  const onTouchMoveCtrl = (event: React.TouchEvent<HTMLElement>) => {
+    //Left
+    if (event.touches.item(0).clientX + 250 < touchStartX) {
+      console.log("swiped left");
+      galleryController(true);
+    }
+    //right
+    if (event.touches.item(0).clientX - 250 > touchStartX) {
+      console.log("swiped right");
+      galleryController(false);
+    }
+    //Left
+    if (event.touches.item(0).clientY + 250 < touchStartY) {
+      console.log("swiped up");
+    }
+    //right
+    if (event.touches.item(0).clientY - 175 > touchStartY) {
+      console.log("swiped down");
+      closeDrawer();
+    }
+  };
+
+  const onTouchEndCtrl = (
+    event: React.TouchEventHandler<HTMLElement> | undefined
+  ) => {};
+
   return (
     <Box
+      position="relative"
       display="flex"
       flexDirection="column"
-      // height="100%"
-      // width="100%"
-      onTouchStart={(touchStartEvent) => console.log(touchStartEvent)}
-      onTouchMove={(touchMoveEvent) => console.log(touchMoveEvent)}
-      onTouchEnd={(e) => console.log()}
-      border={1}
+      maxHeight="97%"
+      width="100%"
+      onTouchStart={(touchStartEvent) => onTouchStartCtrl(touchStartEvent)}
+      onTouchMove={(touchMoveEvent) => onTouchMoveCtrl(touchMoveEvent)}
+      onTouchEnd={(e) => onTouchEndCtrl}
+      // border={1}
+      overflow="auto"
     >
       {/* Desktop Rounded Image Box */}
       <Box
@@ -270,6 +308,9 @@ export const ItemContentMobile = ({
                   </Typography>
                 </Button>
               </Fade>
+              <br />
+              <br />
+              <Box display="flex" m={1}></Box>
             </Box>
           </Slide>
         </Box>

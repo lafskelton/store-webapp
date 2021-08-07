@@ -140,11 +140,11 @@ metadata:
   name: store-webapp-hpa-lci6
   namespace: default
 spec:
-  maxReplicas: 5
+  maxReplicas: 300
   metrics:
     - resource:
         name: cpu
-        targetAverageUtilization: 80
+        targetAverageUtilization: 75
       type: Resource
   minReplicas: 1
   scaleTargetRef:
