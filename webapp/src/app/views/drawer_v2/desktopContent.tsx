@@ -13,7 +13,7 @@ import { ArrowLeftTwoTone, ArrowRightTwoTone } from "@material-ui/icons";
 import { useState } from "react";
 import CloseIcon from "@material-ui/icons/Close";
 import { ItemContentProps } from "./drawer";
-
+import { useMediaQuery } from "@material-ui/core";
 export const ItemContentDesktop = ({
   sideDrawerData,
   closeDrawer,
@@ -28,6 +28,8 @@ export const ItemContentDesktop = ({
   const [slideIn, setSlideIn] = useState<boolean>(true);
   const [galleryPos, setGalleryPos] = useState<number>(0);
   const [galleryOffset, setGalleryOffset] = useState<number>(0);
+
+  let isWideScreen = useMediaQuery("(min-width:1200px)");
 
   //Controls left & right transition of gallery images
   const galleryController = (
@@ -77,13 +79,22 @@ export const ItemContentDesktop = ({
 
   return (
     // Item Content
-    <Box display="flex" flexDirection="row" height="100%" borderRadius={6}>
+    <Box
+      display="flex"
+      flexDirection="row"
+      // height="100%"
+      borderRadius={6}
+      // border={1}
+    >
       <Box
         display="flex"
         flexDirection="column"
         justifyContent="center"
         alignItems="center"
         m={1}
+        border={1}
+        // width="100%"
+        maxWidth={isWideScreen ? 1200 : "100%"}
       >
         {/* Desktop Rounded Image Box */}
         <Box
@@ -143,6 +154,7 @@ export const ItemContentDesktop = ({
         justifyContent="center"
         alignItems="center"
         m={1}
+        maxWidth="40%"
       >
         <Fade in={true} timeout={2222}>
           <Box

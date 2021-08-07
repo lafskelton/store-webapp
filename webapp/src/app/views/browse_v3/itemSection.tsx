@@ -24,7 +24,7 @@ const useStyles = makeStyles({
     position: "relative",
     // bottom: 2,
     background:
-      "linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.1) 75%, rgba(0,0,0,0) 100%)",
+      "linear-gradient(to top, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.2) 75%, rgba(0,0,0,0) 100%)",
     // zIndex: 1065,
   },
 });
@@ -100,9 +100,9 @@ export const FullSectionRow = ({
           className={classes.tile}
           // border={2}
           boxShadow={5}
-          height={useMediaQuery("(min-width:600px)") ? 400 : 300}
+          height={useMediaQuery("(min-width:600px)") ? 375 : 225}
           width="100%"
-          m={1}
+          m={0.5}
           onClick={(e) => click(e)}
           overflow="hidden"
           // border={1}
@@ -134,29 +134,23 @@ export const FullSectionRow = ({
             </Box>
           </Fade>
 
-          <Box display="flex" height={"77%"}>
+          <Box display="flex" height={"80%"}>
             <img
               src={itemData.tileImg}
               alt={""}
-              style={{ width: "100%", height: "150%" }}
+              style={{ width: "100%", height: "125%" }}
             />
           </Box>
 
           <Box
             display="flex"
-            height={"24%"}
-            // border={0}
+            height={"20%"}
             borderRadius={0}
             className={classes.tileBar}
           >
-            <Box width="100%">
-              <Typography
-                variant={"h4"}
-                style={{ color: "#ffffff", fontSize: 66 }}
-              >
-                &nbsp;${itemData.price}
-              </Typography>
-            </Box>
+            <Typography variant={"h4"} style={{ color: "#ffffff" }}>
+              &nbsp;&nbsp;&nbsp;${itemData.price}
+            </Typography>
           </Box>
         </Box>
       </Fade>
@@ -233,9 +227,9 @@ export const DoubleSectionRow = ({
           className={classes.tile}
           // border={2}
           boxShadow={5}
-          width="50%"
-          height={useMediaQuery("(min-width:600px)") ? 250 : 175}
-          m={1}
+          width="100%"
+          height={useMediaQuery("(min-width:600px)") ? 200 : 120}
+          m={0.5}
           onClick={(e) => click(e, true)}
         >
           <Fade
@@ -267,22 +261,20 @@ export const DoubleSectionRow = ({
             <img
               src={leftItemData.tileImg}
               alt={""}
-              style={{ width: "100%", height: "150%" }}
+              style={{ width: "100%", height: "130%" }}
             />
           </Box>
 
           <Box
             display="flex"
             height={"24%"}
-            // border={0}
+            // border={2}
             borderRadius={0}
             className={classes.tileBar}
           >
-            <Box width="100%">
-              <Typography variant={"h3"} style={{ color: "#ffffff" }}>
-                &nbsp;${leftItemData.price}
-              </Typography>
-            </Box>
+            <Typography variant={"h5"} style={{ color: "#ffffff" }}>
+              &nbsp;&nbsp;${rightItemData.price}
+            </Typography>
           </Box>
         </Box>
       </Fade>
@@ -290,11 +282,11 @@ export const DoubleSectionRow = ({
         <Box
           className={classes.tile}
           // border={2}
-          boxShadow={5}
-          width="50%"
-          maxWidth="%50"
-          height={useMediaQuery("(min-width:600px)") ? 250 : 175}
-          m={1}
+          boxShadow={10}
+          width="100%"
+          // maxWidth="%50"
+          height={useMediaQuery("(min-width:600px)") ? 200 : 120}
+          m={0.5}
           onClick={(e) => click(e, false)}
           key={`${sectionId}_${rowId}_rightTile`}
         >
@@ -309,7 +301,7 @@ export const DoubleSectionRow = ({
               width="100%"
               height="100%"
               borderRadius={6}
-              // border={1}
+              // border={3}
               style={{
                 backdropFilter: "blur(6px)",
                 background: "rgba(0,0,0, 0.2)",
@@ -326,22 +318,20 @@ export const DoubleSectionRow = ({
             <img
               src={rightItemData.tileImg}
               alt={""}
-              style={{ width: "100%", height: "150%" }}
+              style={{ width: "100%", height: "130%" }}
             />
           </Box>
 
           <Box
             display="flex"
             height={"24%"}
-            // border={0}
+            // border={2}
             borderRadius={0}
             className={classes.tileBar}
           >
-            <Box width="100%">
-              <Typography variant={"h3"} style={{ color: "#ffffff" }}>
-                &nbsp;${rightItemData.price}
-              </Typography>
-            </Box>
+            <Typography variant={"h5"} style={{ color: "#ffffff" }}>
+              &nbsp;&nbsp;${rightItemData.price}
+            </Typography>
           </Box>
         </Box>
       </Fade>

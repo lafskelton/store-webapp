@@ -82,17 +82,17 @@ export const loadBrowseManifest = async (): Promise<BrowseManifest> => {
                   {
                     imgSrc: "/assets/images/sweater.jpg",
                     imgDesc:
-                      "You probably shouldn't buy this, but hopefully it will invoke a temporary sense of 'joy' for you, and we would be very happy to provide that :) I want a boat!",
+                      "This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
                   },
                   {
                     imgSrc: "/assets/images/1.jpg",
                     imgDesc:
-                      "You probably shouldn't buy this, but hopefully it will invoke a temporary sense of 'joy' for you, and we would be very happy to provide that :) I want a boat!",
+                      "This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
                   },
                   {
                     imgSrc: "/assets/images/mockup2.jpg",
                     imgDesc:
-                      "You probably shouldn't buy this, but hopefully it will invoke a temporary sense of 'joy' for you, and we would be very happy to provide that :) I want a boat!",
+                      "This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
                   },
                 ],
               },
@@ -117,17 +117,17 @@ export const loadBrowseManifest = async (): Promise<BrowseManifest> => {
                   {
                     imgSrc: "/assets/images/sweater.jpg",
                     imgDesc:
-                      "1You probably shouldn't buy this, but hopefully it will invoke a temporary sense of 'joy' for you, and we would be very happy to provide that :) I want a boat!",
+                      "1This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
                   },
                   {
                     imgSrc: "/assets/images/1.jpg",
                     imgDesc:
-                      "2You probably shouldn't buy this, but hopefully it will invoke a temporary sense of 'joy' for you, and we would be very happy to provide that :) I want a boat!",
+                      "2This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
                   },
                   {
                     imgSrc: "/assets/images/mockup2.jpg",
                     imgDesc:
-                      "3You probably shouldn't buy this, but hopefully it will invoke a temporary sense of 'joy' for you, and we would be very happy to provide that :) I want a boat!",
+                      "3This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
                   },
                 ],
               },
@@ -145,17 +145,17 @@ export const loadBrowseManifest = async (): Promise<BrowseManifest> => {
                   {
                     imgSrc: "/assets/images/sweater.jpg",
                     imgDesc:
-                      "1You probably shouldn't buy this, but hopefully it will invoke a temporary sense of 'joy' for you, and we would be very happy to provide that :) I want a boat!",
+                      "1This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
                   },
                   {
                     imgSrc: "/assets/images/1.jpg",
                     imgDesc:
-                      "2You probably shouldn't buy this, but hopefully it will invoke a temporary sense of 'joy' for you, and we would be very happy to provide that :) I want a boat!",
+                      "2This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
                   },
                   {
                     imgSrc: "/assets/images/mockup2.jpg",
                     imgDesc:
-                      "3You probably shouldn't buy this, but hopefully it will invoke a temporary sense of 'joy' for you, and we would be very happy to provide that :) I want a boat!",
+                      "3This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
                   },
                 ],
               },
@@ -181,17 +181,17 @@ export const loadBrowseManifest = async (): Promise<BrowseManifest> => {
                   {
                     imgSrc: "/assets/images/sweater.jpg",
                     imgDesc:
-                      "1You probably shouldn't buy this, but hopefully it will invoke a temporary sense of 'joy' for you, and we would be very happy to provide that :) I want a boat!",
+                      "1This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
                   },
                   {
                     imgSrc: "/assets/images/1.jpg",
                     imgDesc:
-                      "2You probably shouldn't buy this, but hopefully it will invoke a temporary sense of 'joy' for you, and we would be very happy to provide that :) I want a boat!",
+                      "2This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
                   },
                   {
                     imgSrc: "/assets/images/mockup2.jpg",
                     imgDesc:
-                      "3You probably shouldn't buy this, but hopefully it will invoke a temporary sense of 'joy' for you, and we would be very happy to provide that :) I want a boat!",
+                      "3This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
                   },
                 ],
               },
@@ -209,17 +209,17 @@ export const loadBrowseManifest = async (): Promise<BrowseManifest> => {
                   {
                     imgSrc: "/assets/images/sweater.jpg",
                     imgDesc:
-                      "1You probably shouldn't buy this, but hopefully it will invoke a temporary sense of 'joy' for you, and we would be very happy to provide that :) I want a boat!",
+                      "1This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
                   },
                   {
                     imgSrc: "/assets/images/1.jpg",
                     imgDesc:
-                      "2You probably shouldn't buy this, but hopefully it will invoke a temporary sense of 'joy' for you, and we would be very happy to provide that :) I want a boat!",
+                      "2This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
                   },
                   {
                     imgSrc: "/assets/images/mockup2.jpg",
                     imgDesc:
-                      "3You probably shouldn't buy this, but hopefully it will invoke a temporary sense of 'joy' for you, and we would be very happy to provide that :) I want a boat!",
+                      "3This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
                   },
                 ],
               },
@@ -245,17 +245,17 @@ export const loadBrowseManifest = async (): Promise<BrowseManifest> => {
                   {
                     imgSrc: "/assets/images/sweater.jpg",
                     imgDesc:
-                      "1You probably shouldn't buy this, but hopefully it will invoke a temporary sense of 'joy' for you, and we would be very happy to provide that :) I want a boat!",
+                      "1This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
                   },
                   {
                     imgSrc: "/assets/images/1.jpg",
                     imgDesc:
-                      "2You probably shouldn't buy this, but hopefully it will invoke a temporary sense of 'joy' for you, and we would be very happy to provide that :) I want a boat!",
+                      "2This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
                   },
                   {
                     imgSrc: "/assets/images/mockup2.jpg",
                     imgDesc:
-                      "3You probably shouldn't buy this, but hopefully it will invoke a temporary sense of 'joy' for you, and we would be very happy to provide that :) I want a boat!",
+                      "3This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
                   },
                 ],
               },
@@ -299,17 +299,17 @@ export const loadBrowseManifest = async (): Promise<BrowseManifest> => {
                   {
                     imgSrc: "/assets/images/sweater.jpg",
                     imgDesc:
-                      "You probably shouldn't buy this, but hopefully it will invoke a temporary sense of 'joy' for you, and we would be very happy to provide that :) I want a boat!",
+                      "This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
                   },
                   {
                     imgSrc: "/assets/images/1.jpg",
                     imgDesc:
-                      "You probably shouldn't buy this, but hopefully it will invoke a temporary sense of 'joy' for you, and we would be very happy to provide that :) I want a boat!",
+                      "This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
                   },
                   {
                     imgSrc: "/assets/images/mockup2.jpg",
                     imgDesc:
-                      "You probably shouldn't buy this, but hopefully it will invoke a temporary sense of 'joy' for you, and we would be very happy to provide that :) I want a boat!",
+                      "This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
                   },
                 ],
               },
@@ -334,17 +334,17 @@ export const loadBrowseManifest = async (): Promise<BrowseManifest> => {
                   {
                     imgSrc: "/assets/images/sweater.jpg",
                     imgDesc:
-                      "1You probably shouldn't buy this, but hopefully it will invoke a temporary sense of 'joy' for you, and we would be very happy to provide that :) I want a boat!",
+                      "1This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
                   },
                   {
                     imgSrc: "/assets/images/1.jpg",
                     imgDesc:
-                      "2You probably shouldn't buy this, but hopefully it will invoke a temporary sense of 'joy' for you, and we would be very happy to provide that :) I want a boat!",
+                      "2This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
                   },
                   {
                     imgSrc: "/assets/images/mockup2.jpg",
                     imgDesc:
-                      "3You probably shouldn't buy this, but hopefully it will invoke a temporary sense of 'joy' for you, and we would be very happy to provide that :) I want a boat!",
+                      "3This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
                   },
                 ],
               },
@@ -362,17 +362,17 @@ export const loadBrowseManifest = async (): Promise<BrowseManifest> => {
                   {
                     imgSrc: "/assets/images/sweater.jpg",
                     imgDesc:
-                      "1You probably shouldn't buy this, but hopefully it will invoke a temporary sense of 'joy' for you, and we would be very happy to provide that :) I want a boat!",
+                      "1This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
                   },
                   {
                     imgSrc: "/assets/images/1.jpg",
                     imgDesc:
-                      "2You probably shouldn't buy this, but hopefully it will invoke a temporary sense of 'joy' for you, and we would be very happy to provide that :) I want a boat!",
+                      "2This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
                   },
                   {
                     imgSrc: "/assets/images/mockup2.jpg",
                     imgDesc:
-                      "3You probably shouldn't buy this, but hopefully it will invoke a temporary sense of 'joy' for you, and we would be very happy to provide that :) I want a boat!",
+                      "3This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
                   },
                 ],
               },
@@ -398,17 +398,17 @@ export const loadBrowseManifest = async (): Promise<BrowseManifest> => {
                   {
                     imgSrc: "/assets/images/sweater.jpg",
                     imgDesc:
-                      "1You probably shouldn't buy this, but hopefully it will invoke a temporary sense of 'joy' for you, and we would be very happy to provide that :) I want a boat!",
+                      "1This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
                   },
                   {
                     imgSrc: "/assets/images/1.jpg",
                     imgDesc:
-                      "2You probably shouldn't buy this, but hopefully it will invoke a temporary sense of 'joy' for you, and we would be very happy to provide that :) I want a boat!",
+                      "2This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
                   },
                   {
                     imgSrc: "/assets/images/mockup2.jpg",
                     imgDesc:
-                      "3You probably shouldn't buy this, but hopefully it will invoke a temporary sense of 'joy' for you, and we would be very happy to provide that :) I want a boat!",
+                      "3This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
                   },
                 ],
               },
@@ -426,17 +426,17 @@ export const loadBrowseManifest = async (): Promise<BrowseManifest> => {
                   {
                     imgSrc: "/assets/images/sweater.jpg",
                     imgDesc:
-                      "1You probably shouldn't buy this, but hopefully it will invoke a temporary sense of 'joy' for you, and we would be very happy to provide that :) I want a boat!",
+                      "1This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
                   },
                   {
                     imgSrc: "/assets/images/1.jpg",
                     imgDesc:
-                      "2You probably shouldn't buy this, but hopefully it will invoke a temporary sense of 'joy' for you, and we would be very happy to provide that :) I want a boat!",
+                      "2This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
                   },
                   {
                     imgSrc: "/assets/images/mockup2.jpg",
                     imgDesc:
-                      "3You probably shouldn't buy this, but hopefully it will invoke a temporary sense of 'joy' for you, and we would be very happy to provide that :) I want a boat!",
+                      "3This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
                   },
                 ],
               },
@@ -462,17 +462,17 @@ export const loadBrowseManifest = async (): Promise<BrowseManifest> => {
                   {
                     imgSrc: "/assets/images/sweater.jpg",
                     imgDesc:
-                      "1You probably shouldn't buy this, but hopefully it will invoke a temporary sense of 'joy' for you, and we would be very happy to provide that :) I want a boat!",
+                      "1This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
                   },
                   {
                     imgSrc: "/assets/images/1.jpg",
                     imgDesc:
-                      "2You probably shouldn't buy this, but hopefully it will invoke a temporary sense of 'joy' for you, and we would be very happy to provide that :) I want a boat!",
+                      "2This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
                   },
                   {
                     imgSrc: "/assets/images/mockup2.jpg",
                     imgDesc:
-                      "3You probably shouldn't buy this, but hopefully it will invoke a temporary sense of 'joy' for you, and we would be very happy to provide that :) I want a boat!",
+                      "3This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
                   },
                 ],
               },

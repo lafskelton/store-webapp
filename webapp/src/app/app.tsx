@@ -214,7 +214,10 @@ function App() {
       <Box
         position="absolute"
         display="flex"
-        flexGrow={1}
+        flexDirection="row"
+        justifyContent="center"
+        // alignItems="center"
+        // flexGrow={1}
         top={0}
         left={0}
         height={sideDrawer ? "100%" : "0%"}
