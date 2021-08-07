@@ -1,0 +1,209 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: store-webapp
+  managedFields:
+    - apiVersion: apps/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        "f:metadata":
+          "f:labels":
+            .: {}
+            "f:app": {}
+        "f:spec":
+          "f:progressDeadlineSeconds": {}
+          "f:replicas": {}
+          "f:revisionHistoryLimit": {}
+          "f:selector": {}
+          "f:strategy":
+            "f:rollingUpdate":
+              .: {}
+              "f:maxSurge": {}
+              "f:maxUnavailable": {}
+            "f:type": {}
+          "f:template":
+            "f:metadata":
+              "f:labels":
+                .: {}
+                "f:app": {}
+            "f:spec":
+              "f:containers":
+                'k:{"name":"store-nginx-image-sha256-1"}':
+                  .: {}
+                  "f:image": {}
+                  "f:imagePullPolicy": {}
+                  "f:name": {}
+                  "f:resources": {}
+                  "f:terminationMessagePath": {}
+                  "f:terminationMessagePolicy": {}
+              "f:dnsPolicy": {}
+              "f:restartPolicy": {}
+              "f:schedulerName": {}
+              "f:securityContext": {}
+              "f:terminationGracePeriodSeconds": {}
+      manager: GoogleCloudConsole
+      operation: Update
+      time: "2021-08-05T23:32:10Z"
+    - apiVersion: apps/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        "f:metadata":
+          "f:annotations":
+            .: {}
+            "f:deployment.kubernetes.io/revision": {}
+        "f:status":
+          "f:availableReplicas": {}
+          "f:conditions":
+            .: {}
+            'k:{"type":"Available"}':
+              .: {}
+              "f:lastTransitionTime": {}
+              "f:lastUpdateTime": {}
+              "f:message": {}
+              "f:reason": {}
+              "f:status": {}
+              "f:type": {}
+            'k:{"type":"Progressing"}':
+              .: {}
+              "f:lastTransitionTime": {}
+              "f:lastUpdateTime": {}
+              "f:message": {}
+              "f:reason": {}
+              "f:status": {}
+              "f:type": {}
+          "f:observedGeneration": {}
+          "f:readyReplicas": {}
+          "f:replicas": {}
+          "f:updatedReplicas": {}
+      manager: kube-controller-manager
+      operation: Update
+      time: "2021-08-05T23:32:13Z"
+  name: store-webapp
+  namespace: default
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: store-webapp
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: store-webapp
+    spec:
+      containers:
+        - image: gcr.io/utility-canto-321921/github.com/lafskelton/store-nginx-image
+          imagePullPolicy: IfNotPresent
+          name: store-nginx-image-sha256-1
+---
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  labels:
+    app: store-webapp
+  managedFields:
+    - apiVersion: autoscaling/v2beta1
+      fieldsType: FieldsV1
+      fieldsV1:
+        "f:metadata":
+          "f:labels":
+            .: {}
+            "f:app": {}
+        "f:spec":
+          "f:maxReplicas": {}
+          "f:metrics": {}
+          "f:minReplicas": {}
+          "f:scaleTargetRef":
+            "f:apiVersion": {}
+            "f:kind": {}
+            "f:name": {}
+      manager: GoogleCloudConsole
+      operation: Update
+      time: "2021-08-05T23:32:10Z"
+    - apiVersion: autoscaling/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        "f:metadata":
+          "f:annotations":
+            .: {}
+            "f:autoscaling.alpha.kubernetes.io/conditions": {}
+        "f:status":
+          "f:currentReplicas": {}
+      manager: vpa-recommender
+      operation: Update
+      time: "2021-08-05T23:32:25Z"
+  name: store-webapp-hpa-lci6
+  namespace: default
+spec:
+  maxReplicas: 5
+  metrics:
+    - resource:
+        name: cpu
+        targetAverageUtilization: 80
+      type: Resource
+  minReplicas: 1
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: store-webapp
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    cloud.google.com/neg: '{"ingress":true}'
+  managedFields:
+    - apiVersion: v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        "f:metadata":
+          "f:annotations":
+            .: {}
+            "f:kubectl.kubernetes.io/last-applied-configuration": {}
+        "f:spec":
+          "f:ports":
+            .: {}
+            'k:{"port":80,"protocol":"TCP"}':
+              .: {}
+              "f:name": {}
+              "f:port": {}
+              "f:protocol": {}
+              "f:targetPort": {}
+            'k:{"port":443,"protocol":"TCP"}':
+              .: {}
+              "f:name": {}
+              "f:port": {}
+              "f:protocol": {}
+              "f:targetPort": {}
+          "f:selector":
+            .: {}
+            "f:app": {}
+          "f:sessionAffinity": {}
+          "f:type": {}
+      manager: kubectl-client-side-apply
+      operation: Update
+      time: "2021-08-05T18:36:16Z"
+  name: store-webapp-svc
+  namespace: default
+spec:
+  clusterIP: 10.112.15.103
+  clusterIPs:
+    - 10.112.15.103
+  ports:
+    - name: http
+      port: 80
+      protocol: TCP
+      targetPort: 80
+    - name: https
+      port: 443
+      protocol: TCP
+      targetPort: 443
+  selector:
+    app: store-webapp
+  sessionAffinity: None
+  type: ClusterIP
