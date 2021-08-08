@@ -22,7 +22,6 @@ export async function getBrowseManifest() {
         res(undefined);
         return;
       } else if (resp) {
-        console.log(resp.getManifest());
         let obj: BrowseManifest | undefined = JSON.parse(resp.getManifest());
 
         res(obj);

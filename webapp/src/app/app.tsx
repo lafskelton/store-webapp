@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import ButtomMenuBar from "./bottomMenuBar/bottomMenuBar";
 import Home from "./views/home/home";
-import Browse, { loadBrowseManifest } from "./views/browse_v3/browse";
+import Browse from "./views/browse_v3/browse";
 import Cart from "./views/cart/cart";
 import { Slide, Box } from "@material-ui/core";
 import {

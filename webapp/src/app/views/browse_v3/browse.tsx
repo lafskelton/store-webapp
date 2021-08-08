@@ -30,7 +30,7 @@ const useStyles = makeStyles({
 });
 
 //Retreive item manifest from server based on user fingerprint
-export const loadBrowseManifest = async (): Promise<BrowseManifest> => {
+const loadBrowseManifest = async (): Promise<BrowseManifest> => {
   getBrowseManifest().then((res) => {
     console.log("server manifest", res);
   });
