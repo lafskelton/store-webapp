@@ -393,9 +393,9 @@ export default function Browse({
     let offset: number = 500;
     console.log("loaded");
     setElems(
-      <>
-        {manifest ? (
-          manifest.rows.map((row, i) => {
+      manifest ? (
+        <div>
+          {manifest.rows.map((row, i) => {
             console.log("running");
             switch (row.rowType) {
               case RowType.sectionTitle:
@@ -438,11 +438,11 @@ export default function Browse({
                   />
                 );
             }
-          })
-        ) : (
-          <></>
-        )}
-      </>
+          })}
+        </div>
+      ) : (
+        <></>
+      )
     );
     setLoaded(true);
   }, [manifest]);

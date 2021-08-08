@@ -6,7 +6,7 @@ var grpc = require("@improbable-eng/grpc-web").grpc;
 
 var StoreAPI = (function () {
   function StoreAPI() {}
-  StoreAPI.serviceName = "StoreAPI";
+  StoreAPI.serviceName = "storepb.StoreAPI";
   return StoreAPI;
 })();
 

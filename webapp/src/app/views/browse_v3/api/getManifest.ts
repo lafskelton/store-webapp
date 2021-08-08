@@ -22,12 +22,10 @@ export async function getBrowseManifest() {
         res(undefined);
         return;
       } else if (resp) {
-        let obj: BrowseManifest = JSON.parse(resp.getManifest());
-        if (obj) {
-          res(obj);
-        } else {
-          res(undefined);
-        }
+        console.log(resp.getManifest());
+        let obj: BrowseManifest | undefined = JSON.parse(resp.getManifest());
+
+        res(obj);
         return;
       }
     });

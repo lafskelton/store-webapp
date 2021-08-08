@@ -12,6 +12,7 @@ import {
 } from "./myTypes";
 import { SideDrawer } from "./views/drawer_v2/drawer";
 import { useMediaQuery } from "@material-ui/core";
+import { getBrowseManifest } from "./views/browse_v3/api/getManifest";
 
 function App() {
   const [menuSelectState, setMenuSelectState] = useState("Home");
@@ -90,7 +91,11 @@ function App() {
   useEffect(() => {
     //Load data
     if (manifest) return;
-    loadBrowseManifest().then((m) => {
+    // loadBrowseManifest().then((m) => {
+    //   console.log(m);
+    //   setManifest(m);
+    // });
+    getBrowseManifest().then((m) => {
       console.log(m);
       setManifest(m);
     });

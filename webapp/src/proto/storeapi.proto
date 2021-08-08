@@ -4,6 +4,7 @@ syntax = "proto3";
 option go_package = "github.com/lafskelton/store-api/storepb";
 
 
+package storepb; 
 
 
 // READ ONLY API FOR STORE ITEMS
