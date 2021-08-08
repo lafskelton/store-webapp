@@ -162,8 +162,9 @@ function App() {
             m={1}
             display="flex"
             flexDirection="column"
-            width="100%"
+            width={menuSelectState === "Home" ? "100%" : "0%"}
             height="89%"
+            border={1}
           >
             <Home
               show={menuSelectState === "Home"}
@@ -197,11 +198,11 @@ function App() {
             m={1}
             display="flex"
             flexDirection="column"
-            width="100%"
+            width={menuSelectState === "Cart" ? "100%" : 0}
             height="88%"
           >
             <Cart
-              show={menuSelectState === "Home"}
+              show={menuSelectState === "Cart"}
               exiting={exitTimer}
               key="cart-root"
               shoppingCart={shoppingCart}
