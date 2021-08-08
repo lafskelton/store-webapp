@@ -1,7 +1,0 @@
-{
-  "dependencies": {
-    "@improbable-eng/grpc-web": "^0.14.0",
-    "google-protobuf": "^3.17.3",
-    "ts-protoc-gen": "^0.15.0"
-  }
-}
