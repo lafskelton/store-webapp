@@ -115,7 +115,7 @@ spec:
       containers:
         - image: gcr.io/utility-canto-321921/github.com/lafskelton/store-webapp
           imagePullPolicy: IfNotPresent
-          name: store-nginx-image-sha256-1
+          name: store-webapp-sha256-1
 ---
 apiVersion: autoscaling/v2beta1
 kind: HorizontalPodAutoscaler
@@ -167,3 +167,51 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: store-webapp
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    cloud.google.com/neg: '{"ingress":true}'
+  managedFields:
+    - apiVersion: v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        "f:metadata":
+          "f:annotations":
+            .: {}
+            "f:kubectl.kubernetes.io/last-applied-configuration": {}
+        "f:spec":
+          "f:clusterIP": {}
+          "f:clusterIPs": {}
+          "f:ports":
+            .: {}
+            'k:{"port":80,"protocol":"TCP"}':
+              .: {}
+              "f:name": {}
+              "f:port": {}
+              "f:protocol": {}
+              "f:targetPort": {}
+          "f:selector":
+            .: {}
+            "f:app": {}
+          "f:sessionAffinity": {}
+          "f:type": {}
+      manager: kubectl-client-side-apply
+      operation: Update
+      time: "2021-08-08T06:07:59Z"
+  name: store-webapp-svc
+  namespace: default
+spec:
+  clusterIP: 10.112.11.239
+  clusterIPs:
+    - 10.112.11.239
+  ports:
+    - name: http
+      port: 80
+      protocol: TCP
+      targetPort: 80
+  selector:
+    app: store-webapp
+  sessionAffinity: None
+  type: ClusterIP

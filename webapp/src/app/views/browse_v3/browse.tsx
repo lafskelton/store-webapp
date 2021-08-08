@@ -15,6 +15,7 @@ import {
   SectionTitleRow,
 } from "./itemSection";
 import { useEffect } from "react";
+import { getBrowseManifest } from "./api/getManifest";
 
 const useStyles = makeStyles({
   root: {
@@ -30,6 +31,9 @@ const useStyles = makeStyles({
 
 //Retreive item manifest from server based on user fingerprint
 export const loadBrowseManifest = async (): Promise<BrowseManifest> => {
+  getBrowseManifest().then((res) => {
+    console.log("server manifest", res);
+  });
   let x = new Promise<BrowseManifest>((res) => {
     setTimeout(() => {
       res({
