@@ -75,10 +75,26 @@ metadata:
           "f:observedGeneration": {}
           "f:readyReplicas": {}
           "f:replicas": {}
+          "f:unavailableReplicas": {}
           "f:updatedReplicas": {}
       manager: kube-controller-manager
       operation: Update
-      time: "2021-08-05T23:32:13Z"
+      time: "2021-08-08T03:27:22Z"
+    - apiVersion: apps/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        "f:metadata":
+          "f:annotations":
+            "f:gcb-build-id": {}
+            "f:kubectl.kubernetes.io/last-applied-configuration": {}
+        "f:spec":
+          "f:template":
+            "f:metadata":
+              "f:annotations":
+                "f:gcb-build-id": {}
+      manager: kubectl-client-side-apply
+      operation: Update
+      time: "2021-08-08T03:27:22Z"
   name: store-webapp
   namespace: default
 spec:
@@ -97,7 +113,7 @@ spec:
         app: store-webapp
     spec:
       containers:
-        - image: gcr.io/utility-canto-321921/github.com/lafskelton/store-nginx-image
+        - image: gcr.io/utility-canto-321921/github.com/lafskelton/store-webapp
           imagePullPolicy: IfNotPresent
           name: store-nginx-image-sha256-1
 ---
@@ -124,7 +140,7 @@ metadata:
             "f:name": {}
       manager: GoogleCloudConsole
       operation: Update
-      time: "2021-08-05T23:32:10Z"
+      time: "2021-08-08T02:02:17Z"
     - apiVersion: autoscaling/v1
       fieldsType: FieldsV1
       fieldsV1:
@@ -136,15 +152,15 @@ metadata:
           "f:currentReplicas": {}
       manager: vpa-recommender
       operation: Update
-      time: "2021-08-05T23:32:25Z"
-  name: store-webapp-hpa-lci6
+      time: "2021-08-08T02:02:32Z"
+  name: store-webapp-hpa-fjy9
   namespace: default
 spec:
-  maxReplicas: 300
+  maxReplicas: 5
   metrics:
     - resource:
         name: cpu
-        targetAverageUtilization: 75
+        targetAverageUtilization: 80
       type: Resource
   minReplicas: 1
   scaleTargetRef:
@@ -174,7 +190,44 @@ metadata:
               "f:port": {}
               "f:protocol": {}
               "f:targetPort": {}
-            'k:{"port":443,"protocol":"TCP"}':
+          "f:selector":
+            .: {}
+            "f:app": {}
+          "f:sessionAffinity": {}
+          "f:type": {}
+      manager: kubectl-client-side-apply
+      operation: Update
+      time: "2021-08-08T03:10:32Z"
+  name: store-webapp-svc
+  namespace: default
+spec:
+  ports:
+    - name: http
+      port: 80
+      protocol: TCP
+      targetPort: 80
+  selector:
+    app: store-webapp
+  sessionAffinity: None
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    cloud.google.com/neg: '{"ingress":true}'
+  managedFields:
+    - apiVersion: v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        "f:metadata":
+          "f:annotations":
+            .: {}
+            "f:kubectl.kubernetes.io/last-applied-configuration": {}
+        "f:spec":
+          "f:ports":
+            .: {}
+            'k:{"port":42069,"protocol":"TCP"}':
               .: {}
               "f:name": {}
               "f:port": {}
@@ -187,22 +240,15 @@ metadata:
           "f:type": {}
       manager: kubectl-client-side-apply
       operation: Update
-      time: "2021-08-05T18:36:16Z"
-  name: store-webapp-svc
+      time: "2021-08-08T03:10:32Z"
+  name: store-api-svc
   namespace: default
 spec:
-  clusterIP: 10.112.15.103
-  clusterIPs:
-    - 10.112.15.103
   ports:
-    - name: http
-      port: 80
+    - name: grpc-web
+      port: 42069
       protocol: TCP
-      targetPort: 80
-    - name: https
-      port: 443
-      protocol: TCP
-      targetPort: 443
+      targetPort: 42069
   selector:
     app: store-webapp
   sessionAffinity: None
