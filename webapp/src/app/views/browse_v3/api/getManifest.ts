@@ -6,7 +6,7 @@ import {
 } from "../../../../proto/storeapi_pb";
 import { BrowseManifest } from "../../../myTypes";
 
-const host = "http://tanukicloud.com/api";
+const host = "http://tanukicloud.com";
 const client = new StoreAPIClient(host);
 
 export async function getBrowseManifest() {
