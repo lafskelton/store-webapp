@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+
+option go_package = "github.com/lafskelton/store-api/storepb";
+
+
+
+
+// READ ONLY API FOR STORE ITEMS
+service StoreAPI {
+    rpc GetBrowseManifest (GetBrowseManifestInbound) returns (GetBrowseManifestOutbound);
+}
+
+
+
+//In
+message GetBrowseManifestInbound {
+    repeated string flags = 1;
+    string userID = 2;
+    string originID = 3;
+}   
+//Out
+message GetBrowseManifestOutbound {
+    string manifest = 1;
+}
+
+// # GetBrowseManifest
+
+// //In
+// message GetBrowseManifestInbound {
+
+// }   
+// //Out
+// message GetBrowseManifestOutbound {
+
+// }
