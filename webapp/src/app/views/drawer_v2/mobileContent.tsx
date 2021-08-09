@@ -333,6 +333,12 @@ export const ItemContentMobile = ({
                     fullWidth
                     input={
                       <InputBase
+                        disabled={
+                          shoppingCart.find(
+                            (cartItem) =>
+                              cartItem.item.id === sideDrawerData.itemData.id
+                          ) !== undefined
+                        }
                         style={{
                           borderRadius: 4,
                           position: "relative",

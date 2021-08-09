@@ -277,6 +277,12 @@ export const ItemContentDesktop = ({
                         timeout={{ appear: 2222, enter: 1000, exit: 333 }}
                       >
                         <IconButton
+                          disabled={
+                            shoppingCart.find(
+                              (cartItem) =>
+                                cartItem.item.id === sideDrawerData.itemData.id
+                            ) !== undefined
+                          }
                           style={{
                             //Change manifest array to map with pointer index to related image
                             background: v.buttonColor,
@@ -284,7 +290,15 @@ export const ItemContentDesktop = ({
                             height: 40,
                             width: 40,
                             margin: 3,
-                            opacity: v.selected ? 0.5 : 1,
+                            opacity:
+                              v.selected ||
+                              shoppingCart.find(
+                                (cartItem) =>
+                                  cartItem.item.id ===
+                                  sideDrawerData.itemData.id
+                              ) !== undefined
+                                ? 0.5
+                                : 1,
                           }}
                           onClick={() => {
                             selectVariant(i);
@@ -298,7 +312,7 @@ export const ItemContentDesktop = ({
                     <></>
                   )}
                 </Box>
-                <Box display="flex" m={1} width="25%">
+                <Box display="flex" m={1} flexGrow={1} maxWidth="30%">
                   <Select
                     // labelId="demo-simple-select-label"
                     id="demo-simple-select"
@@ -319,6 +333,12 @@ export const ItemContentDesktop = ({
                     }}
                     input={
                       <InputBase
+                        disabled={
+                          shoppingCart.find(
+                            (cartItem) =>
+                              cartItem.item.id === sideDrawerData.itemData.id
+                          ) !== undefined
+                        }
                         style={{
                           borderRadius: 4,
                           position: "relative",
