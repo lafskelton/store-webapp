@@ -24,6 +24,16 @@ export async function getBrowseManifest() {
       } else if (resp) {
         let obj: BrowseManifest | undefined = JSON.parse(resp.getManifest());
 
+        //Set up UI
+        if (obj) {
+          obj.rows.forEach((row) => {
+            row.items.forEach((item) => {
+              if (item.variants.length > 0) {
+                item.variants[0].selected = true;
+              }
+            });
+          });
+        }
         res(obj);
         return;
       }

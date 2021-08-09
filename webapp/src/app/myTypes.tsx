@@ -20,6 +20,7 @@ export interface ItemData {
   tileImg: string;
   // galleryImgList: string[];
   galleryImgList: GalleryImageElement[];
+  selectedSize: "xsm" | "sm" | "md" | "lg" | "xlg";
 }
 
 export interface ItemVariant {

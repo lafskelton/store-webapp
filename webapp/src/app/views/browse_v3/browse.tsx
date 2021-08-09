@@ -30,315 +30,315 @@ const useStyles = makeStyles({
 });
 
 //Retreive item manifest from server based on user fingerprint
-const loadBrowseManifest = async (): Promise<BrowseManifest> => {
-  getBrowseManifest().then((res) => {
-    console.log("server manifest", res);
-  });
-  let x = new Promise<BrowseManifest>((res) => {
-    setTimeout(() => {
-      res({
-        rows: [
-          {
-            sectionId: 0,
-            rowId: 0,
-            rowType: RowType.sectionTitle,
-            numItems: 1,
-            items: [
-              {
-                sectionId: 0,
-                rowId: 0,
-                rowType: RowType.sectionTitle,
-                id: "",
-                title: "Random",
-                price: 0,
-                tileImg: "",
-                variants: [],
-                galleryImgList: [{ imgSrc: "", imgDesc: "" }],
-              },
-            ],
-          },
-          {
-            sectionId: 0,
-            rowId: 0,
-            rowType: RowType.full,
-            numItems: 1,
-            items: [
-              {
-                sectionId: 0,
-                rowId: 0,
-                rowType: RowType.full,
-                id: "123dfdsfsdfsdf4",
-                title: "Shit #1",
-                price: 59,
-                tileImg: "/assets/images/shirt.jpg",
-                // variantColors: ["#324234", "#d33434", "#2332de"],
-                variants: [
-                  {
-                    buttonColor: "#324234",
-                    assocGalleryImg: 0,
-                    selected: false,
-                  },
-                  {
-                    buttonColor: "#d33434",
-                    assocGalleryImg: 2,
-                    selected: false,
-                  },
-                  {
-                    buttonColor: "#2332de",
-                    assocGalleryImg: 1,
-                    selected: false,
-                  },
-                ],
-                galleryImgList: [
-                  {
-                    imgSrc: "/assets/images/sweater.jpg",
-                    imgDesc:
-                      "This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
-                  },
-                  {
-                    imgSrc: "/assets/images/1.jpg",
-                    imgDesc:
-                      "This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
-                  },
-                  {
-                    imgSrc: "/assets/images/shirt.jpg",
-                    imgDesc:
-                      "This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
-                  },
-                ],
-              },
-            ],
-          },
-          {
-            sectionId: 0,
-            rowId: 1,
-            rowType: RowType.double,
-            numItems: 2,
-            items: [
-              {
-                sectionId: 0,
-                rowId: 1,
-                rowType: RowType.double,
-                id: "7b32e09c-297bd-4476-a1b0-6e640357d29f",
-                title: "Shit #2",
-                price: 39,
-                tileImg: "/assets/images/pants.jpg",
-                variants: [
-                  {
-                    buttonColor: "#324234",
-                    assocGalleryImg: 0,
-                    selected: false,
-                  },
-                  {
-                    buttonColor: "#2332de",
-                    assocGalleryImg: 1,
-                    selected: false,
-                  },
-                  {
-                    buttonColor: "#d33434",
-                    assocGalleryImg: 2,
-                    selected: false,
-                  },
-                ],
-                galleryImgList: [
-                  {
-                    imgSrc: "/assets/images/sweater.jpg",
-                    imgDesc:
-                      "1This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
-                  },
-                  {
-                    imgSrc: "/assets/images/1.jpg",
-                    imgDesc:
-                      "2This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
-                  },
-                  {
-                    imgSrc: "/assets/images/shirt.jpg",
-                    imgDesc:
-                      "3This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
-                  },
-                ],
-              },
-              {
-                sectionId: 0,
-                rowId: 1,
-                rowType: RowType.double,
-                id: "7b32e0-297b-4476-a1b0-6e640357d29f",
-                title: "Shit #3",
-                price: 13,
-                tileImg: "/assets/images/sweater.jpg",
-                variants: [
-                  {
-                    buttonColor: "#324234",
-                    assocGalleryImg: 0,
-                    selected: false,
-                  },
-                  {
-                    buttonColor: "#2332de",
-                    assocGalleryImg: 1,
-                    selected: false,
-                  },
-                  {
-                    buttonColor: "#d33434",
-                    assocGalleryImg: 2,
-                    selected: false,
-                  },
-                ],
-                galleryImgList: [
-                  {
-                    imgSrc: "/assets/images/sweater.jpg",
-                    imgDesc:
-                      "1This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
-                  },
-                  {
-                    imgSrc: "/assets/images/shirt.jpg",
-                    imgDesc:
-                      "2This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
-                  },
-                  {
-                    imgSrc: "/assets/images/1.jpg",
-                    imgDesc:
-                      "3This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
-                  },
-                ],
-              },
-            ],
-          },
-          {
-            sectionId: 0,
-            rowId: 2,
-            rowType: RowType.double,
-            numItems: 2,
-            items: [
-              {
-                sectionId: 0,
-                rowId: 2,
-                rowType: RowType.double,
-                id: "7b32e09c-297b-4476-a1-6e640357d29f",
-                title: "Shit #4",
-                price: 37,
-                tileImg: "/assets/images/shirt.jpg",
-                variants: [
-                  {
-                    buttonColor: "#324234",
-                    assocGalleryImg: 0,
-                    selected: false,
-                  },
-                  {
-                    buttonColor: "#2332de",
-                    assocGalleryImg: 1,
-                    selected: false,
-                  },
-                  {
-                    buttonColor: "#d33434",
-                    assocGalleryImg: 2,
-                    selected: false,
-                  },
-                ],
-                galleryImgList: [
-                  {
-                    imgSrc: "/assets/images/1.jpg",
-                    imgDesc:
-                      "1This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
-                  },
-                  {
-                    imgSrc: "/assets/images/shirt.jpg",
-                    imgDesc:
-                      "2This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
-                  },
-                  {
-                    imgSrc: "/assets/images/sweater.jpg",
-                    imgDesc:
-                      "3This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
-                  },
-                ],
-              },
-              {
-                sectionId: 0,
-                rowId: 2,
-                rowType: RowType.double,
-                id: "7b32e09c-297b-4476-a0-6e640357d29f",
-                title: "Shit #5",
-                price: 69,
-                tileImg: "/assets/images/1.jpg",
-                variants: [
-                  {
-                    buttonColor: "#324234",
-                    assocGalleryImg: 0,
-                    selected: false,
-                  },
-                  {
-                    buttonColor: "#2332de",
-                    assocGalleryImg: 1,
-                    selected: false,
-                  },
-                ],
-                galleryImgList: [
-                  {
-                    imgSrc: "/assets/images/sweater.jpg",
-                    imgDesc:
-                      "1This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
-                  },
-                  {
-                    imgSrc: "/assets/images/1.jpg",
-                    imgDesc:
-                      "2This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
-                  },
-                  {
-                    imgSrc: "/assets/images/shirt.jpg",
-                    imgDesc:
-                      "3This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
-                  },
-                ],
-              },
-            ],
-          },
-          {
-            sectionId: 0,
-            rowId: 3,
-            rowType: RowType.full,
-            numItems: 1,
-            items: [
-              {
-                sectionId: 0,
-                rowId: 3,
-                rowType: RowType.full,
-                id: "1234",
-                title: "Shit #6",
-                price: 21,
-                tileImg: "/assets/images/shirt.jpg",
-                variants: [
-                  {
-                    buttonColor: "#324234",
-                    assocGalleryImg: 0,
-                    selected: false,
-                  },
-                ],
-                galleryImgList: [
-                  {
-                    imgSrc: "/assets/images/shirt.jpg",
-                    imgDesc:
-                      "1This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
-                  },
-                  {
-                    imgSrc: "/assets/images/sweater.jpg",
-                    imgDesc:
-                      "2This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
-                  },
-                  {
-                    imgSrc: "/assets/images/1.jpg",
-                    imgDesc:
-                      "3This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
-                  },
-                ],
-              },
-            ],
-          },
-        ],
-      });
-    }, 1000); // Simulated 5 sec response time :(
-  });
-  return x;
-};
+// const loadBrowseManifest = async (): Promise<BrowseManifest> => {
+//   getBrowseManifest().then((res) => {
+//     console.log("server manifest", res);
+//   });
+//   let x = new Promise<BrowseManifest>((res) => {
+//     setTimeout(() => {
+//       res({
+//         rows: [
+//           {
+//             sectionId: 0,
+//             rowId: 0,
+//             rowType: RowType.sectionTitle,
+//             numItems: 1,
+//             items: [
+//               {
+//                 sectionId: 0,
+//                 rowId: 0,
+//                 rowType: RowType.sectionTitle,
+//                 id: "",
+//                 title: "Random",
+//                 price: 0,
+//                 tileImg: "",
+//                 variants: [],
+//                 galleryImgList: [{ imgSrc: "", imgDesc: "" }],
+//               },
+//             ],
+//           },
+//           {
+//             sectionId: 0,
+//             rowId: 0,
+//             rowType: RowType.full,
+//             numItems: 1,
+//             items: [
+//               {
+//                 sectionId: 0,
+//                 rowId: 0,
+//                 rowType: RowType.full,
+//                 id: "123dfdsfsdfsdf4",
+//                 title: "Shit #1",
+//                 price: 59,
+//                 tileImg: "/assets/images/shirt.jpg",
+//                 // variantColors: ["#324234", "#d33434", "#2332de"],
+//                 variants: [
+//                   {
+//                     buttonColor: "#324234",
+//                     assocGalleryImg: 0,
+//                     selected: false,
+//                   },
+//                   {
+//                     buttonColor: "#d33434",
+//                     assocGalleryImg: 2,
+//                     selected: false,
+//                   },
+//                   {
+//                     buttonColor: "#2332de",
+//                     assocGalleryImg: 1,
+//                     selected: false,
+//                   },
+//                 ],
+//                 galleryImgList: [
+//                   {
+//                     imgSrc: "/assets/images/sweater.jpg",
+//                     imgDesc:
+//                       "This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
+//                   },
+//                   {
+//                     imgSrc: "/assets/images/1.jpg",
+//                     imgDesc:
+//                       "This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
+//                   },
+//                   {
+//                     imgSrc: "/assets/images/shirt.jpg",
+//                     imgDesc:
+//                       "This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
+//                   },
+//                 ],
+//               },
+//             ],
+//           },
+//           {
+//             sectionId: 0,
+//             rowId: 1,
+//             rowType: RowType.double,
+//             numItems: 2,
+//             items: [
+//               {
+//                 sectionId: 0,
+//                 rowId: 1,
+//                 rowType: RowType.double,
+//                 id: "7b32e09c-297bd-4476-a1b0-6e640357d29f",
+//                 title: "Shit #2",
+//                 price: 39,
+//                 tileImg: "/assets/images/pants.jpg",
+//                 variants: [
+//                   {
+//                     buttonColor: "#324234",
+//                     assocGalleryImg: 0,
+//                     selected: false,
+//                   },
+//                   {
+//                     buttonColor: "#2332de",
+//                     assocGalleryImg: 1,
+//                     selected: false,
+//                   },
+//                   {
+//                     buttonColor: "#d33434",
+//                     assocGalleryImg: 2,
+//                     selected: false,
+//                   },
+//                 ],
+//                 galleryImgList: [
+//                   {
+//                     imgSrc: "/assets/images/sweater.jpg",
+//                     imgDesc:
+//                       "1This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
+//                   },
+//                   {
+//                     imgSrc: "/assets/images/1.jpg",
+//                     imgDesc:
+//                       "2This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
+//                   },
+//                   {
+//                     imgSrc: "/assets/images/shirt.jpg",
+//                     imgDesc:
+//                       "3This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
+//                   },
+//                 ],
+//               },
+//               {
+//                 sectionId: 0,
+//                 rowId: 1,
+//                 rowType: RowType.double,
+//                 id: "7b32e0-297b-4476-a1b0-6e640357d29f",
+//                 title: "Shit #3",
+//                 price: 13,
+//                 tileImg: "/assets/images/sweater.jpg",
+//                 variants: [
+//                   {
+//                     buttonColor: "#324234",
+//                     assocGalleryImg: 0,
+//                     selected: false,
+//                   },
+//                   {
+//                     buttonColor: "#2332de",
+//                     assocGalleryImg: 1,
+//                     selected: false,
+//                   },
+//                   {
+//                     buttonColor: "#d33434",
+//                     assocGalleryImg: 2,
+//                     selected: false,
+//                   },
+//                 ],
+//                 galleryImgList: [
+//                   {
+//                     imgSrc: "/assets/images/sweater.jpg",
+//                     imgDesc:
+//                       "1This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
+//                   },
+//                   {
+//                     imgSrc: "/assets/images/shirt.jpg",
+//                     imgDesc:
+//                       "2This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
+//                   },
+//                   {
+//                     imgSrc: "/assets/images/1.jpg",
+//                     imgDesc:
+//                       "3This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
+//                   },
+//                 ],
+//               },
+//             ],
+//           },
+//           {
+//             sectionId: 0,
+//             rowId: 2,
+//             rowType: RowType.double,
+//             numItems: 2,
+//             items: [
+//               {
+//                 sectionId: 0,
+//                 rowId: 2,
+//                 rowType: RowType.double,
+//                 id: "7b32e09c-297b-4476-a1-6e640357d29f",
+//                 title: "Shit #4",
+//                 price: 37,
+//                 tileImg: "/assets/images/shirt.jpg",
+//                 variants: [
+//                   {
+//                     buttonColor: "#324234",
+//                     assocGalleryImg: 0,
+//                     selected: false,
+//                   },
+//                   {
+//                     buttonColor: "#2332de",
+//                     assocGalleryImg: 1,
+//                     selected: false,
+//                   },
+//                   {
+//                     buttonColor: "#d33434",
+//                     assocGalleryImg: 2,
+//                     selected: false,
+//                   },
+//                 ],
+//                 galleryImgList: [
+//                   {
+//                     imgSrc: "/assets/images/1.jpg",
+//                     imgDesc:
+//                       "1This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
+//                   },
+//                   {
+//                     imgSrc: "/assets/images/shirt.jpg",
+//                     imgDesc:
+//                       "2This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
+//                   },
+//                   {
+//                     imgSrc: "/assets/images/sweater.jpg",
+//                     imgDesc:
+//                       "3This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
+//                   },
+//                 ],
+//               },
+//               {
+//                 sectionId: 0,
+//                 rowId: 2,
+//                 rowType: RowType.double,
+//                 id: "7b32e09c-297b-4476-a0-6e640357d29f",
+//                 title: "Shit #5",
+//                 price: 69,
+//                 tileImg: "/assets/images/1.jpg",
+//                 variants: [
+//                   {
+//                     buttonColor: "#324234",
+//                     assocGalleryImg: 0,
+//                     selected: false,
+//                   },
+//                   {
+//                     buttonColor: "#2332de",
+//                     assocGalleryImg: 1,
+//                     selected: false,
+//                   },
+//                 ],
+//                 galleryImgList: [
+//                   {
+//                     imgSrc: "/assets/images/sweater.jpg",
+//                     imgDesc:
+//                       "1This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
+//                   },
+//                   {
+//                     imgSrc: "/assets/images/1.jpg",
+//                     imgDesc:
+//                       "2This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
+//                   },
+//                   {
+//                     imgSrc: "/assets/images/shirt.jpg",
+//                     imgDesc:
+//                       "3This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
+//                   },
+//                 ],
+//               },
+//             ],
+//           },
+//           {
+//             sectionId: 0,
+//             rowId: 3,
+//             rowType: RowType.full,
+//             numItems: 1,
+//             items: [
+//               {
+//                 sectionId: 0,
+//                 rowId: 3,
+//                 rowType: RowType.full,
+//                 id: "1234",
+//                 title: "Shit #6",
+//                 price: 21,
+//                 tileImg: "/assets/images/shirt.jpg",
+//                 variants: [
+//                   {
+//                     buttonColor: "#324234",
+//                     assocGalleryImg: 0,
+//                     selected: false,
+//                   },
+//                 ],
+//                 galleryImgList: [
+//                   {
+//                     imgSrc: "/assets/images/shirt.jpg",
+//                     imgDesc:
+//                       "1This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
+//                   },
+//                   {
+//                     imgSrc: "/assets/images/sweater.jpg",
+//                     imgDesc:
+//                       "2This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
+//                   },
+//                   {
+//                     imgSrc: "/assets/images/1.jpg",
+//                     imgDesc:
+//                       "3This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
+//                   },
+//                 ],
+//               },
+//             ],
+//           },
+//         ],
+//       });
+//     }, 1000); // Simulated 5 sec response time :(
+//   });
+//   return x;
+// };
 
 interface BrowseProps {
   show: boolean;

@@ -5,6 +5,7 @@ import {
   Divider,
   Fade,
   IconButton,
+  InputBase,
   MenuItem,
   Select,
   Slide,
@@ -94,6 +95,7 @@ export const ItemContentMobile = ({
   };
 
   useEffect(() => {
+    //onload timeout animation timer
     setTimeout(() => {
       setSlideIn(true);
       setTimeout(() => {
@@ -148,8 +150,8 @@ export const ItemContentMobile = ({
   const [selectedVariant, setSelectedVariant] = useState<number>(0);
 
   const [selectedSize, setSelectedSize] = useState<
-    "xsm" | "sml" | "med" | "lrg" | "xlg"
-  >("med");
+    "xsm" | "sm" | "md" | "lg" | "xlg"
+  >("md");
 
   const selectVariant = (n: number) => {
     setSelectedVariant(n);
@@ -318,17 +320,29 @@ export const ItemContentMobile = ({
                     <></>
                   )}
                 </Box>
-                <Box display="flex" m={1} width="25%">
+                <Box display="flex" m={1} flexGrow={1} maxWidth="40%x">
                   <Select
                     labelId="drawer-select-label"
                     id="drawer-simple-select"
                     value={selectedSize}
                     onChange={(e) => {
                       setSelectedSize(
-                        e.target.value as "xsm" | "sml" | "med" | "lrg" | "xlg"
+                        e.target.value as "xsm" | "sm" | "md" | "lg" | "xlg"
                       );
                     }}
                     fullWidth
+                    input={
+                      <InputBase
+                        style={{
+                          borderRadius: 4,
+                          position: "relative",
+                          // backgroundColor: "#000000",
+                          border: "1px solid #ced4da",
+                          fontSize: 11,
+                          // padding: "10px 26px 10px 12px",
+                        }}
+                      />
+                    }
                     MenuProps={{
                       MenuListProps: {
                         style: {
@@ -341,12 +355,14 @@ export const ItemContentMobile = ({
                       value={"xsm"}
                       style={{ backdropFilter: "blur(6px)" }}
                     >
-                      X-Small
+                      &nbsp;&nbsp;X-Small
                     </MenuItem>
-                    <MenuItem value={"sm"}>Small</MenuItem>
-                    <MenuItem value={"md"}>Medium</MenuItem>
-                    <MenuItem value={"lg"}>Large</MenuItem>
-                    <MenuItem value={"xlg"}>X-Large</MenuItem>
+                    <MenuItem value={"sm"} alignItems="center">
+                      &nbsp;&nbsp;Small
+                    </MenuItem>
+                    <MenuItem value={"md"}>&nbsp;&nbsp;Medium</MenuItem>
+                    <MenuItem value={"lg"}>&nbsp;&nbsp;Large</MenuItem>
+                    <MenuItem value={"xlg"}>&nbsp;&nbsp;X-Large</MenuItem>
                   </Select>
                 </Box>
               </Box>

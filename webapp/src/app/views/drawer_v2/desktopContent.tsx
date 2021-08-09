@@ -107,8 +107,8 @@ export const ItemContentDesktop = ({
   const [selectedVariant, setSelectedVariant] = useState<number>(0);
 
   const [selectedSize, setSelectedSize] = useState<
-    "xsm" | "sml" | "med" | "lrg" | "xlg"
-  >("med");
+    "xsm" | "sm" | "md" | "lg" | "xlg"
+  >("md");
 
   const selectVariant = (n: number) => {
     setSelectedVariant(n);
@@ -305,10 +305,11 @@ export const ItemContentDesktop = ({
                     value={selectedSize}
                     onChange={(e) => {
                       setSelectedSize(
-                        e.target.value as "xsm" | "sml" | "med" | "lrg" | "xlg"
+                        e.target.value as "xsm" | "sm" | "md" | "lg" | "xlg"
                       );
                     }}
                     fullWidth
+                    style={{ borderRadius: 6 }}
                     MenuProps={{
                       MenuListProps: {
                         style: {
@@ -316,6 +317,18 @@ export const ItemContentDesktop = ({
                         },
                       },
                     }}
+                    input={
+                      <InputBase
+                        style={{
+                          borderRadius: 4,
+                          position: "relative",
+                          // backgroundColor: "#000000",
+                          border: "1px solid #ced4da",
+                          fontSize: 16,
+                          padding: "10px 26px 10px 12px",
+                        }}
+                      />
+                    }
                   >
                     <MenuItem
                       value={"xsm"}
