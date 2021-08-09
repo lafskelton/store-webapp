@@ -132,6 +132,7 @@ export const ItemContentDesktop = ({
     <Box
       display="flex"
       flexDirection="row"
+      justifyContent="space-between"
       // height="100%"
       borderRadius={6}
       // border={1}
@@ -143,7 +144,7 @@ export const ItemContentDesktop = ({
         alignItems="center"
         m={1}
         // border={1}
-        // width="100%"
+        width="100%"
         maxWidth={isWideScreen ? 1200 : "100%"}
       >
         {/* Desktop Rounded Image Box */}
@@ -197,7 +198,7 @@ export const ItemContentDesktop = ({
             <img
               alt=""
               src={sideDrawerData.itemData.galleryImgList[galleryPos].imgSrc}
-              style={{ maxWidth: "100%", height: "auto" }}
+              style={{ width: "100%", height: "auto" }}
             />
           </Slide>
         </Box>
@@ -210,7 +211,9 @@ export const ItemContentDesktop = ({
         justifyContent="center"
         alignItems="center"
         m={1}
+        // border={1}
         maxWidth="40%"
+        maxHeight="40%"
       >
         <Fade in={true} timeout={2222}>
           <Box
