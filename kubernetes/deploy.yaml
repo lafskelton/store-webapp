@@ -173,6 +173,8 @@ kind: Service
 metadata:
   annotations:
     cloud.google.com/neg: '{"ingress":true}'
+  labels:
+    app: store-webapp
   managedFields:
     - apiVersion: v1
       fieldsType: FieldsV1
