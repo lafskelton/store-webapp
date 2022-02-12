@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+option go_package = "github.com/thundrcld/accountproto";
+
+service AccountService {
+    rpc CreateUser (CreateUserRequest) returns (CreateUserReply) {}
+}
+
+// User Login Request
+message CreateUserRequest {
+    string email = 1;
+    string pwd = 2;
+    string username = 3;
+    string locationCode = 4;
+    string ip = 5;
+}
+
+// UserLogin responce
+message CreateUserReply {
+    bool valid = 1;
+    string accountID = 2;
+    string error = 4;
+}

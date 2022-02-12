@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: authorization-service
+  labels:
+    app: authorization
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: authorization
+  template:
+    metadata:
+      labels:
+        app: authorization
+    spec:
+      containers:
+        - name: authorization
+          image: thundrcld.com/auth:latest
+          command: ["./main"]
+          ports:
+            - containerPort: 42069
+          imagePullPolicy: Never
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: authorization
+  labels:
+    app: authorization
+spec:
+  ports:
+  - name: grpc-web
+    port: 42069
+  selector:
+    app: authorization
+---
+
+  

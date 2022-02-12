@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+option go_package = "github.com/thundrcld/authproto";
+
+service AuthService {
+    rpc UserLogin (UserLoginRequest) returns (UserLoginReply) {}
+    rpc UserVerifyEmail (VerifyEmailRequest) returns (VerifyEmailReply) {}
+}
+
+// User Login Request
+message UserLoginRequest {
+    string email = 1;
+    string pwd = 2;
+    string signature = 3;
+}
+
+// UserLogin responce
+message UserLoginReply {
+    bool valid = 1;
+    string accountID = 2;
+    string sessionToken = 3;
+    string error = 4;
+}
+
+
+// VerifyEmailRequest
+message VerifyEmailRequest{
+    string accountID = 1; 
+    string vcode = 2;
+    string clientSignature = 3;
+}
+message VerifyEmailReply {
+    bool valid = 1; 
+    string sessionToken = 2;
+}

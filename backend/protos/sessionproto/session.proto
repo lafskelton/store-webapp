@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+option go_package = "github.com/thundrcld/proto/sessionservice";
+
+service SessionService {
+    rpc SessionStream (SessionStreamStart) returns (stream SessionStreamMsg) {}
+}
+
+// Start Request
+message SessionStreamStart {
+    string sessionStartToken = 1;
+    string deviceIP = 2;
+    string accountID = 3;
+}
+
+// responces
+message SessionStreamMsg {
+    enum MsgType{
+        REFRESH_SESSION = 0;
+        END_SESSION = 1;
+        INVALID_SESSION = 2;
+        STREAM_STATUS = 3;
+        UPDATE_CLIENT_STATE = 4;
+        USER_NOTIFICATION = 5;
+        USER_USER_MESSAGE = 6; 
+    }
+    MsgType msgType = 1;
+    string jsonPayload = 2; 
+}

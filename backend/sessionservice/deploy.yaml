@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sessionservice
+  labels:
+    app: sessionservice
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sessionservice
+  template:
+    metadata:
+      labels:
+        app: sessionservice
+    spec:
+      containers:
+        - name: sessionservice
+          image: thundrcld.com/sessionservice:latest
+          command: ["./main"]
+          ports:
+            - containerPort: 42069
+          imagePullPolicy: Never
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sessionservice
+  labels:
+    app: sessionservice
+spec:
+  ports:
+  - name: grpc-web
+    port: 42069
+  selector:
+    app: sessionservice
+---
+
+  

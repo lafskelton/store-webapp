@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+option go_package = "github.com/thundrcld/emailserviceproto";
+
+service EmailService {
+    rpc CreateVerification (CreateVerificationRequest) returns (CreateVerificationReply) {}
+}
+
+// User Login Request
+message CreateVerificationRequest {
+    string accountID = 2; 
+    string email = 1;
+}
+
+// UserLogin responce
+message CreateVerificationReply {
+    bool valid = 1;
+}
