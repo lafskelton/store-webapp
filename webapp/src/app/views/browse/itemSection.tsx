@@ -1,5 +1,5 @@
 import { Typography, Box, Fade } from "@material-ui/core";
-import { ItemData, ShoppingCartItem, SideDrawerState } from "./../../myTypes";
+import { ItemData, ShoppingCartItem, SideDrawerState } from "../../myTypes";
 import { makeStyles } from "@material-ui/core";
 import { createRipple } from "./lib/ripple";
 import { useMediaQuery } from "@material-ui/core";

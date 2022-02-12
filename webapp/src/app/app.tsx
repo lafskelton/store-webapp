@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import ButtomMenuBar from "./bottomMenuBar/bottomMenuBar";
 import Home from "./views/home/home";
-import Browse from "./views/browse_v3/browse";
+import Browse, { loadBrowseManifest } from "./views/browse/browse";
 import Cart from "./views/cart/cart";
 import { Slide, Box } from "@material-ui/core";
 import {
@@ -12,7 +12,7 @@ import {
 } from "./myTypes";
 import { SideDrawer } from "./views/drawer_v2/drawer";
 import { useMediaQuery } from "@material-ui/core";
-import { getBrowseManifest } from "./views/browse_v3/api/getManifest";
+// import { getBrowseManifest } from "./views/browse_v3/api/getManifest";
 
 function App() {
   const [menuSelectState, setMenuSelectState] = useState("Home");
@@ -91,14 +91,15 @@ function App() {
   useEffect(() => {
     //Load data
     if (manifest) return;
-    // loadBrowseManifest().then((m) => {
-    //   console.log(m);
-    //   setManifest(m);
-    // });
-    getBrowseManifest().then((m) => {
+    loadBrowseManifest().then((m) => {
       console.log(m);
       setManifest(m);
     });
+    //This function would pull from a database if this wasn't a demo!
+    // getBrowseManifest().then((m) => {
+    //   console.log(m);
+    //   setManifest(m);
+    // });
   }, [manifest]);
 
   useEffect(() => {
@@ -169,7 +170,6 @@ function App() {
             flexDirection="column"
             width={menuSelectState === "Home" ? "100%" : "0%"}
             height="89%"
-            border={1}
           >
             <Home
               show={menuSelectState === "Home"}
