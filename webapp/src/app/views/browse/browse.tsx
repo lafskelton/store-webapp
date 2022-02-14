@@ -237,17 +237,17 @@ export const loadBrowseManifest = async (): Promise<BrowseManifest> => {
                   {
                     imgSrc: "/assets/images/sweater.jpg",
                     imgDesc:
-                      "This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
+                      "This shirt, while it may look like it is similar to our other shirts. Is actually located at a different place in our database. Take action, buy next week!",
                   },
                   {
                     imgSrc: "/assets/images/1.jpg",
                     imgDesc:
-                      "This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
+                      "This shirt, while it may look like it is similar to our other shirts. Is actually located at a different place in our database. Take action, buy next week!",
                   },
                   {
                     imgSrc: "/assets/images/shirt.jpg",
                     imgDesc:
-                      "This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
+                      "This shirt, while it may look like it is similar to our other shirts. Is actually located at a different place in our database. Take action, buy next week!",
                   },
                 ],
                 selectedSize: "md",
@@ -289,17 +289,17 @@ export const loadBrowseManifest = async (): Promise<BrowseManifest> => {
                   {
                     imgSrc: "/assets/images/sweater.jpg",
                     imgDesc:
-                      "1This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
+                      "1This shirt, while it may look like it is similar to our other shirts. Is actually located at a different place in our database. Take action, buy next week!",
                   },
                   {
                     imgSrc: "/assets/images/1.jpg",
                     imgDesc:
-                      "2This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
+                      "2This shirt, while it may look like it is similar to our other shirts. Is actually located at a different place in our database. Take action, buy next week!",
                   },
                   {
                     imgSrc: "/assets/images/shirt.jpg",
                     imgDesc:
-                      "3This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
+                      "3This shirt, while it may look like it is similar to our other shirts. Is actually located at a different place in our database. Take action, buy next week!",
                   },
                 ],
                 selectedSize: "md",
@@ -333,17 +333,17 @@ export const loadBrowseManifest = async (): Promise<BrowseManifest> => {
                   {
                     imgSrc: "/assets/images/sweater.jpg",
                     imgDesc:
-                      "1This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
+                      "1This shirt, while it may look like it is similar to our other shirts. Is actually located at a different place in our database. Take action, buy next week!",
                   },
                   {
                     imgSrc: "/assets/images/shirt.jpg",
                     imgDesc:
-                      "2This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
+                      "2This shirt, while it may look like it is similar to our other shirts. Is actually located at a different place in our database. Take action, buy next week!",
                   },
                   {
                     imgSrc: "/assets/images/1.jpg",
                     imgDesc:
-                      "3This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
+                      "3This shirt, while it may look like it is similar to our other shirts. Is actually located at a different place in our database. Take action, buy next week!",
                   },
                 ],
                 selectedSize: "md",
@@ -385,17 +385,17 @@ export const loadBrowseManifest = async (): Promise<BrowseManifest> => {
                   {
                     imgSrc: "/assets/images/1.jpg",
                     imgDesc:
-                      "1This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
+                      "1This shirt, while it may look like it is similar to our other shirts. Is actually located at a different place in our database. Take action, buy next week!",
                   },
                   {
                     imgSrc: "/assets/images/shirt.jpg",
                     imgDesc:
-                      "2This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
+                      "2This shirt, while it may look like it is similar to our other shirts. Is actually located at a different place in our database. Take action, buy next week!",
                   },
                   {
                     imgSrc: "/assets/images/sweater.jpg",
                     imgDesc:
-                      "3This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
+                      "3This shirt, while it may look like it is similar to our other shirts. Is actually located at a different place in our database. Take action, buy next week!",
                   },
                 ],
                 selectedSize: "md",
@@ -424,17 +424,17 @@ export const loadBrowseManifest = async (): Promise<BrowseManifest> => {
                   {
                     imgSrc: "/assets/images/sweater.jpg",
                     imgDesc:
-                      "1This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
+                      "1This shirt, while it may look like it is similar to our other shirts. Is actually located at a different place in our database. Take action, buy next week!",
                   },
                   {
                     imgSrc: "/assets/images/1.jpg",
                     imgDesc:
-                      "2This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
+                      "2This shirt, while it may look like it is similar to our other shirts. Is actually located at a different place in our database. Take action, buy next week!",
                   },
                   {
                     imgSrc: "/assets/images/shirt.jpg",
                     imgDesc:
-                      "3This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
+                      "3This shirt, while it may look like it is similar to our other shirts. Is actually located at a different place in our database. Take action, buy next week!",
                   },
                 ],
                 selectedSize: "md",
@@ -466,17 +466,17 @@ export const loadBrowseManifest = async (): Promise<BrowseManifest> => {
                   {
                     imgSrc: "/assets/images/shirt.jpg",
                     imgDesc:
-                      "1This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
+                      "1This shirt, while it may look like it is similar to our other shirts. Is actually located at a different place in our database. Take action, buy next week!",
                   },
                   {
                     imgSrc: "/assets/images/sweater.jpg",
                     imgDesc:
-                      "2This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
+                      "2This shirt, while it may look like it is similar to our other shirts. Is actually located at a different place in our database. Take action, buy next week!",
                   },
                   {
                     imgSrc: "/assets/images/1.jpg",
                     imgDesc:
-                      "3This is a useless test description in the form of a really really long run on sentence, i hate run on sentences because they really do know how to go on forever, i guess. run on sentences suck. alot.",
+                      "3This shirt, while it may look like it is similar to our other shirts. Is actually located at a different place in our database. Take action, buy next week!",
                   },
                 ],
                 selectedSize: "md",

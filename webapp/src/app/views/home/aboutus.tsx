@@ -108,16 +108,14 @@ export default function AboutUs({ slideIn, changeView }: AboutUsProps) {
           align="center"
           style={{
             fontSize: useMediaQuery("(min-aspect-ratio: 6/5)") ? 18 : 16,
-            margin: 10,
+            margin: 5,
             maxWidth: 444,
           }}
         >
-          {/* Powered by autismo! */}i like trains.i like trains.i like trains.i
-          like trains.i like trains.i like trains.i like trains.i like trains.i
-          like trains.i like trains.i like trains.i like trains.i like trains.i
-          like trains.i like trains.i like trains.i like trains.i like trains.i
-          like trains.i like trains.i like trains.i like trains.i like trains.i
-          like trains.i like trains.i like trains.
+          {/* Powered by autismo! */} About Lorem Ipsum. It is a long
+          established fact that a reader will be distracted by the readable
+          content of a page when looking at its layout. The point of using Lorem
+          Ipsum is that it has a more-or-less normal distribution of letters.
         </Typography>
       </Fade>
       <br />
